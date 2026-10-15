@@ -1,0 +1,230 @@
+%%\documentclass[preprint,aps,draft]{revtex4}
+%\documentclass[preprint,floatfix,superscriptaddress]{revtex4}
+%\documentclass[preprint,aps]{revtex4}
+%\documentclass[aps,twocolumn,floatfix]{revtex4}
+%\documentclass[twocolumn,floatfix,superscriptaddress]{revtex4}
+%\documentclass[aps,twocolumn,draft]{revtex4}
+\documentclass[aps,onecolumn,floatfix,superscriptaddress,a4]{revtex4}
+\usepackage{epsfig}
+%\usepackage{rotating}
+%\usepackage{subeqnarray}
+\usepackage{epsfig}
+\usepackage{amsbsy}
+\usepackage{latexsym} 
+%\usepackage[dvips]{graphicx}
+\usepackage{amsmath}
+\usepackage{amsxtra}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{graphics,color}
+\usepackage{subfig}
+\usepackage{mathrsfs}
+%
+\def\eps{\varepsilon}
+
+\begin{document}
+
+%\linenumbers
+
+\title{$S_{11}$ fitting routines for RF cavity resonances}
+
+\author{A.~Mostacci}
+%\author{Many authors}
+%\email{Main.Author@lnf.infn.it} 
+% Uncomment this line if the Main Author is me
+\email{Andrea.Mostacci@uniroma1.it} 
+\affiliation{ ``La Sapienza'' Universit\`a di Roma, Rome, Italy}
+\altaffiliation[Also at ]{INFN, Laboratori Nazionali di Frascati, C.P. 13 00044 
+         Frascati, Italy}
+
+\date{\today}   % Deleting this command produces today's date.
+
+%\begin{abstract}
+%The Abstract
+%\end{abstract}
+%\pacs{29.27.-a, 41.75.Fr, Ht, 41.60.Cr, 41.85.Ct}
+
+\maketitle
+
+% main text
+\section{Introduction}
+
+%\section{Reflection coeficient for a single resonance}
+
+A mode in a resonant cavity can be modeled as a resonant circuit; we will consider the parallel
+resonant circuit of Figure~1 where the transformer accounts for the circuit exciting the
+mode. In this modelization the impedance of the cavity is
+\begin{equation}
+Z_c(\omega)=\frac{R}{1+j Q_0 \delta}
+\quad \mbox{with}\quad
+Q_0=R\sqrt{\frac{C}{L}}, \ \omega_0=\frac{1}{\sqrt{LC}}, \ 
+\delta=\frac{\omega}{\omega_0}-\frac{\omega_0}{\omega}.
+\label{Zcavity}
+\end{equation}
+The power dissipated in the cavity provided that $V_c$ is the voltage at the ends of the
+parallel circuit is $P_{wall}=V_c^2/2 R$ and it is related to the energy stored in the cavity
+$U$ since $Q=\omega_0 U/P_d$. The impedance of the cavity, as seen from the transformer end, is 
+\begin{equation}
+Z(\omega)=\frac{R/n^2}{1+j Q_0 \delta}=\frac{\beta Z_0}{1+j Q_0 \delta}
+\quad \mbox{since}\quad
+\beta Z_0=\frac{R}{n^2}.
+\label{Ztransf}
+\end{equation}
+\begin{figure}[!htbp]
+\label{EqCircuit}
+\centering
+\epsfig{file=images/RLCscheme.eps, width=0.4\linewidth, clip=}
+\put(0,0){\textcolor{red}{$Z_c(\omega)$}}
+\put(-210,0){$Z(\omega)$}
+%\includegraphics*[width=95mm]{figure2.eps}
+\caption{
+Cavity parallel circuit.%~\cite{sandroCas}
+}
+\end{figure}
+
+The reflection coefficient measured at the coupling antenna/waveguide is 
+\begin{equation}
+S_{11}=\frac{Z(\omega)-Z_0}{Z(\omega)+Z_0}
+=\frac{\beta - 1 - j Q_0 \delta}{\beta + 1 + j Q_0 \delta}=
+\frac{\beta^2-1-(Q_0 \delta)^2}{(\beta+1)^2+(Q_0 \delta)^2}-
+      j\frac{2 \beta Q_0 \delta}{(\beta+1)^2+(Q_0 \delta)^2}.
+%\quad\mbox{with}\quad
+%\quad \delta=\frac{f}{f_0}-\frac{f_0}{f}
+%\mbox{Maximum Electric Field} (\mbox{MV/m})= ??? \ P_{RF} (\mbox{MW})
+\label{S11}
+\end{equation}
+%with $\delta=f/f_0-f_0/f$. 
+The amplitude of the reflection coefficient is
+\begin{equation}
+\left|S_{11}\right|=\sqrt{\frac{(\beta-1)^2+(Q_0 \delta)^2}{(\beta+1)^2+(Q_0 \delta)^2}}.
+\label{absS11}
+\end{equation}
+From the amplitude alone, one can not distinguish under-coupled from over-coupled resonance
+since the transformation $\beta \to 1/\beta$ and $Q_0 \to Q_0/\beta$ results in the same 
+$\left| S_{11} \right|$. Therefore the phase (or the Smith charth plot) must be checked; the
+phase reads:
+\begin{equation}
+\angle S_{11}=
+\arctan{\left(\frac{Q_0 \delta}{1-\beta}\right)}-\arctan{\left(\frac{Q_0 \delta}{1+\beta} \right)}
+=-\arctan{\left(\frac{2\beta Q_0 \delta}{\beta^2-1-(Q_0 \delta)^2}\right)},
+\label{angleS11}
+\end{equation}
+where the first relation prevents from fictious phase jumps. Around the resonace frequency,
+$\angle S_{11}$ can be approximated as
+\begin{equation}
+\angle S_{11}\approx
+\frac{2 \beta}{1-\beta^2} Q_0 \delta = \frac{2 \beta}{1-\beta} Q_L \delta
+\quad\mbox{if}\quad
+\left|\frac{Q_0\delta}{1-\beta}\right|\ll 1.
+\label{angleS11approx}
+\end{equation}
+
+\begin{figure}[!htbp]
+\label{fig:absS11}
+\centering
+\epsfig{file=images/S11TheoryAbs.eps, width=0.35\linewidth, clip=}
+\epsfig{file=images/S11TheoryAbsZoom.eps, width=0.35\linewidth, clip=}
+%\includegraphics*[width=95mm]{figure2.eps}
+\caption{
+Magnitude of the $S_{11}$ according to Eq.~\ref{absS11} as a function of the normalised
+frequency shift $\delta$ in a wide range (left picture) and in a narrow range (right picture)
+around the resonance $\delta=0$. The red line is obtained with $\beta=0.85$ and $Q_0=12000$
+(under-coupling), while the blue line is for $\beta=1/0.85$ and the same $Q_0$ (over-coupling).}
+\end{figure}
+
+\begin{figure}[!htbp]
+\label{fig:absS11}
+\centering
+\epsfig{file=images/S11Theoryphase.eps, width=0.35\linewidth, clip=}
+\epsfig{file=images/S11TheoryphaseZoom.eps, width=0.35\linewidth, clip=}
+%\includegraphics*[width=95mm]{figure2.eps}
+\caption{
+Phase of the $S_{11}$ according to Eq.~\ref{angleS11} as a function of the normalised
+frequency shift $\delta$ in a wide range (left picture) and in a narrow range (right picture)
+around the resonance $\delta=0$. The red line is obtained with $\beta=0.85$ and $Q_0=12000$
+(under-coupling), while the blue line is for $\beta=1/0.85$ and the same $Q_0$ (over-coupling).
+The dashed black line are the first order approximation around the resonance frequency
+according to Eq.~\ref{angleS11approx}.
+}
+\end{figure}
+
+\begin{figure}[!htbp]
+\label{fig:absS11}
+\centering
+\epsfig{file=images/S11smith.eps, width=0.4\linewidth, clip=}
+%\includegraphics*[width=95mm]{figure2.eps}
+\caption{
+Smith chart of the of the $S_{11}$ according to Eq.~\ref{S11} for $f_0$=2.856~GHz $Q_0=12000$
+and $\beta=0.85$ ($1/0.85$) for the red (blue) line, i.e. under-coupling (over-coupling) condition.
+}
+\end{figure}
+
+
+\section{Routines description}
+The model used in the fit is the single resonance reflection coeficinent of Eq.~\ref{S11}
+considering a constant attenuation $\alpha$:
+\begin{equation}
+\left|S_{11}\right|=\alpha
+\sqrt{\frac{(\beta-1)^2+(Q_0 \delta)^2}{(\beta+1)^2+(Q_0 \delta)^2}}.
+\quad \mbox{with} \quad
+\alpha \in [0,1].
+\label{S11alpha}
+\end{equation}
+
+As an estimation of the quality of the fit, we could quadratically sum the difference between
+the  data $\widetilde{S_{11}}$ and its estimation $S_{11}$, i.e.
+\begin{equation}
+\sigma_{||}=
+\sqrt{\frac{\sum \left(\left|S_{11}\right|-\left|\widetilde{S_{11}}\right| \right)^2}{N-N_{par}}}
+\quad \mbox{and} \quad
+\sigma_{\angle}=
+\sqrt{\frac{\sum \left(\angle S_{11} -\angle \widetilde{S_{11}} \right)^2 }{N-N_{par}}},
+\end{equation}
+where the sum is weighted for the number of effective degree of freedoms that is the difference
+between the number of data points and the number of fit parameters $N_{par}$.
+
+
+\begin{itemize}
+\item
+Interpolation from Eq.~\ref{S11alpha} keeping $f_0$, $\beta$, $Q_0$ as free parameters of the
+fit. The attenuation $\alpha$ is given. Results in the following figures are drawn with 
+magenta lines.
+\\ {\bf MATLAB routine}: S11fit.m.
+\item
+Interpolation from Eq.~\ref{S11alpha} keeping $\beta$, $Q_0$ as free parameters of the
+fit. The resonance frequency is chosen as the minimum of the $\left|S_{11}\right|$ and its
+unceratinty as the frequency sample separation divided by $\sqrt{12}$. The attenuation $\alpha$
+is given.  Results in the following figures are drawn with 
+blue lines.
+\\ {\bf MATLAB routine}: S11fit\_delta.m.
+\item
+Interpolation from Eq.~\ref{S11alpha} keeping $\beta$, $Q_0$ and $\alpha$ as free parameters of the
+fit. The resonance frequency is chosen as the minimum of the $\left|S_{11}\right|$ and its
+unceratinty as the frequency sample separation divided by $\sqrt{12}$. Results in the following
+figures are drawn with green lines. 
+\\ {\bf MATLAB routine}: S11fit\_delta\_attentation.m.
+\item
+Interpolation from Eq.~\ref{S11alpha} keeping $f_0$, $\beta$, $Q_0$ and $\alpha$ as free
+parameters of the 
+fit. Results in the following
+figures are drawn with black lines. 
+\\ {\bf MATLAB routine}: S11fit\_attentation.m.
+\end{itemize}
+
+
+%\begin{thebibliography}{00}
+
+% \bibitem{label}
+% Text of bibliographic item
+%\bibitem{sandroCas}%1
+%A.~Gallo, {\it Cas Lectures}, ?? 2008.
+
+%\end{thebibliography}
+
+\end{document}
+
+
+
