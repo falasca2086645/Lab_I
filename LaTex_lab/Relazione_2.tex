@@ -11,7 +11,9 @@
 \tableofcontents
 
 \mainmatter
- 
+ \chapter{Note!!!}
+Rifai figura 3.1, sinusuoide, con marker, e riedi conti. 
+\\incertezza SPA?? Rivedi cifre dopo la virgola
 \chapter{Misura della frequenza e dell'ampiezza di un segnale sinusoidale con incertezza}
 
 \chapter{Misura del DANL}
@@ -28,10 +30,74 @@ segnali periodici a 1MHz di frequenza e con ampiezza di picco di 1V (2V di ampie
 una impedenza di ingresso di $50\Omega$, e in questo modo abbiamo ottenuto il massimo
  adattamento, e coefficiente di riflessione nullo.
 
-\section{Segnale sinusoidale}
+\section{Misurazione di un segnale sinusoidale con oscilloscopio e SPA}
 In questo caso abbiamo usato il generatore per ottenere un segnale sinusoidale con le specifiche 
-viste sopra. 
-\\L'oscilloscopio 
+viste sopra. Per queste misurazioni abbiamo impostato la RBW a 1KHz, minimizzando anche qui il
+ rumore senza ottenere variazioni del segnale o misurazioni troppo lente) e lo span a 50KHz.
+\\Per la misurazione abbiamo impostato il generatore a 1V di tensione picco-picco, poichè in questo
+ caso il generatore, senza carico interno, generain maniera autonoma  una sinusoide a 2V di picco-picco,
+ in modo che una volta attaccato a un carico da $50 \Omega$, come nel caso del SPA, sullo strumento
+ arrivi metà della tensione del generatore in aperto. La Figura~\ref{fig:circuito_50ohm} mostra il
+ circuito equivalente appena esposto.
+\\ Quindi, per vedere sull'oscilloscopio, che ha
+ una impedenza di ingresso elevata ($1M\Omega$), un segnale a 1V di picco come da specifica
+dell'esercitazione abbiamo impostato il generatore a 1V di tensione picco-picco.
+
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz}[american voltages]
+        \draw
+        (0,0) to[V, invert, l=$V_1$] (0,3)
+              to[R, l={$R_1=50\,\Omega$}] (3,3)
+              to[short, -*] (4,3)
+              to[R, l={$R_L=50\,\Omega$}] (4,0)
+              -- (0,0);
+
+        % Nodo dopo la prima resistenza
+        \node[above] at (4,3) {$V_L$};
+
+        % Riferimento di massa
+        \draw (2,0) node[ground]{};
+    \end{circuitikz}
+
+    \caption{Circuito con generatore e carico da 50 ohm.}
+    \label{fig:circuito_50ohm}
+\end{figure}
+
+Siamo passati poi a misurare il segnale con lo SPA e il segnale ottenuto è il seguente. Come nel
+caso precedente, per ottenere il segnale desiderato, abbiamo valutato la tensione picco-picco del
+generatore da inserire in base all'impedenza di ingresso dello strumento di misura. Abbiamo quindi 
+impostato la tensione picco-picco del generatore a 1V, in modo da avere una sinusoide a 1V picco-picco
+in ingresso allo SPA. 
+\\La misura è riportata nella Figura~\ref{fig:sinusoide_1MHz}.
+
+\begin{figure} [H]
+\centering
+\includegraphics[width=0.6\textwidth]{./Images/Relazione2_Foto/3_1_sinusioide_1MHz_Vp=1_span_50KHz.jpeg}
+\caption{Segnale sinuoidale misurato tramite lo SPA.}
+\label{fig:sinusoide_1MHz}
+\end{figure}
+Il valore misurato  a $1.0000\pm 0.0012 MHz$ è $3.01dBm\pm+0.5 dB$.
+\\Prima di misurare ci aspettavamo dalla teoria un valore di circa 3.98dBm. Questo valore è stato
+ ricavato tramite i seguenti passaggi:
+
+\begin{align}
+&V_p=1 V \\
+&V_{RMS}=\frac{V_p}{\sqrt{2}}=0.7071 \\
+&V_{SPA}=\frac{V_{RMS}}{2}=0.3536 \\
+&P=\frac{V_x^2}{50}=0.0025W=2.5mW \\
+&P_{dbm}=10log_{10}(P(mW))=3.9794
+\end{align}
+
+Dove $V_p$ e $V_{RMS}$ sono le tensioni di picco dal generatore, quello che in Figura~\ref{fig:circuito_50ohm}
+è $V_1$,  mentre $V_{SPA}$ è la tensione in ingresso allo SPA, a causa degli effetti partitivi visti
+ prima.
+\\Il valore teorico e quello misurato differiscono tra loro di 0.9694, una differenza superiore 
+all'errore massimo di misura dell'ampiezza. 
+\\Questo errore a prima vista inaspettato è legato alle perdite del cavo coassiale e dei connettori
+che collegano generatore e SPA, che introducono quindi delle perdite non trascurabili.
+
+\section{Misurazione di un'onda quadra con oscilloscopio e SPA}    
  
 
 
@@ -42,3 +108,4 @@ viste sopra.
 \chapter{Risposta in frequenza di un diodo schottky}
 
 \end{document}
+
