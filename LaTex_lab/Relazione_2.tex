@@ -17,9 +17,104 @@ Rifai figura 3.1, sinusuoide, con marker, e riedi conti.
 \\Mettere in primo capitolo, la pria volta che valutiamo le incertezze, le formule dell'errore.
 \\Metter espiegazione sulla componente in continua in primo capiotlo.
 \\Rivedi banda filtro. Basta così poco?
-\chapter{Misura della frequenza e dell'ampiezza di un segnale sinusoidale con incertezza}
 
-\chapter{Misura del DANL}
+
+\chapter{Misurazione di frequenza e ampiezza di un segnale sinusoidale}
+La misurazione è riassunta nel seguente figura \ref{fig:pna_sa}, l'obiettivo è osservare il segnale sinusoidale generato dal Synthesizer a 1.25 GHz sullo Spectrum Analyzer.
+
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[
+        block/.style={draw, thick, rectangle, minimum width=3.4cm, minimum height=2cm, align=center},
+        conn/.style={draw, thick, circle, inner sep=0pt, minimum size=0.25cm, fill=white}
+    ]
+        % Blocchi
+        \node[block] (pna) {PNA Agilent\\Synthesizer};
+        \node[block, right=5cm of pna] (sa) {Spectrum\\Analyzer};
+ 
+        % Connettori
+        \node[conn] (c1) at (pna.east) {};
+        \node[conn] (c2) at (sa.west) {};
+ 
+        % Cavo coassiale (due linee parallele)
+        \draw[thick] ([yshift=1.5pt]c1.east) -- ([yshift=1.5pt]c2.west);
+        \draw[thick] ([yshift=-1.5pt]c1.east) -- ([yshift=-1.5pt]c2.west);
+        \node[above=5pt] at ($(c1)!0.5!(c2)$) {\small Coassiale};
+    \end{tikzpicture}
+    \caption{Collegamento tramite cavo coassiale tra PNA Agilent Synthesizer e Spectrum Analyzer.}
+    \label{fig:pna_sa}
+\end{figure}
+
+Sullo schermo dello SPA (figura \ref{fig:1_1}) si osserva un picco in frequenza con portante 1.252 GHz ed una potenza di segnale di -21.267 dBm. Sul PNA Agilent avevamo impostato una potenza di segnale di -20dBm la differenza tra la potenza di segnale emesso e la potenza di segnale ricevuto è dovuto da contribuiti di perdite, come ad esempio le perdite lungo il cavo coassiale.
+
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=1\textwidth]{./Images/Relazione2_Foto/1_1_Misura_Sinusoide_1_5G_-20dBm_span_3Ghz_ref_level_10dBm_FIGURE.png} 
+    \caption{Misura Sinusoide 1.5Ghz, Potenza segnale: -20dBm, span=3Ghz, ref\_level=10dBm}
+    \label{fig:1_1}
+\end{figure}
+Per eseguire una misura maggiormente precisa andiamo a diminuire la Resolution Bandwidth (RBW), affinchè l'incertezza sul valore della frequenza sia minore come si vede nella formula \ref{formula_1}, ed allargandando conseguentemente lo SPAN per avere una visualizzazione migliore. Durante la misurazione abbiamo scelto una Resolution Bandwidth (RBW) = 30Hz ed uno SPAN = 1kHz. Ottenendo il grafico in figura \ref{fig:1_2}.
+\begin{equation}
+    Max. deviation = \pm (frequency \times Ref.frequency + 2\% \times SPAN+20\% \times RBW)
+    \label{formula_1}
+\end{equation}
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=1\textwidth]{./Images/Relazione2_Foto/1.2MISURAFREQEPOTSEGNALECONRBW30HZESPAN1KHZFIGURA.png} 
+    \caption{}
+    \label{fig:1_2}
+\end{figure}
+Il valore misurato della frequenza con incertezza è:
+\[ f = 1.250000 \pm 0.000001276 GHz\]
+
+Sulla misura di potenza, il costruttore suggerisce un massimo di incertezza di 0.5 dB se:
+ - i livelli di ampiezza sono compresi tra 10 e -70dBm;
+ - RBW < 100kHz;
+ - S/N >16 dB.
+ Tutte queste condizioni sono soddisfatte in particolar modo l'\(SNR = -21 dBm-(-85dBm) = 64 dB\).
+ 
+\[P_s = -21.0683 dBm \pm 0.5\ dB\]
+Per esprimere la misura in mW: \(P_(s,mW)) = 10^\frac{P_s,dBM}{10} = 7.82 \mu W\).
+\\
+Per convertire l'incertezza ne vado a valutare il valore percentuale:
+\[\Delta P_s = 100(10^\frac{0.5}{10}-1) = 12.2\%\]
+\[P_s = 0.007820 \pm 0.000954\ mW\]
+
+\chapter{Misurazioni del DANL}
+Dopo aver configurato lo SPA con ingresso un carico da 50 \(\Omega\) vogliamo misurare la potenza di rumore dello strumento riportata in ingresso (Displayed Average Noise Level) a 1.5 GHz.
+
+Sullo SPA sono state adoperate le seguenti impostazioni: Center Frequency = 1.5 GHz; SPAN = 1 MHz; RBW = 10 kHz; RBW/VBW = 10; Attenuation = 0 dB. Utilizzando le funzioni “Detector Sample” e “Trace Average” fornite dallo SPA, è stato valutato il DANL(figura \ref{fig:DANL}), il quale è strettamente dipende dalla banda ovvero dal RBW:
+\[DANL@10kHz = -102.119 dBm\]
+
+Dalla teoria sappiamo che ogni fattore 10 di RBW sposta il DANL di 10 dB, come si osserva nella seguente formula:
+\[DANL@1Hz = DANL@RBW -10log\frac{RBW}{1Hz} \]
+Di conseguenza:
+\[DANL@1Hz =DANL@10kHz - 10log\frac{10kHz}{1Hz} =-142.119 dBm.\]
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=1\textwidth]{./Images/Relazione2_Foto/2_1Misura_Potenza_Rumore_1_5Ghz_SPAN1Mhz_RBW10kHz_VBW1kHz_Att0_FIGURE.png} 
+    \caption{Misura DANL@10kHz}
+    \label{fig:DANL}
+\end{figure}
+La verifica sperimentale di questo concetto teorico è fatto in figura \ref{fig:overlap_grafici_DANL} e si osserva come alla diminuzione di un fattore 10 della RBW entra di fatto meno rumore medio nello strumento inteso come un abbassamento di 10 dB del DANL.
+\\
+La curva verde rappresenta il DANL@100kHz = -92.3095 dBm. 
+\\
+La curva rossa rappresenta il DANL@10kHz = -102.119 dBm. 
+\\
+La curva blu rappresenta il DANL@1kHz = -111.856 dBm. 
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=1\textwidth]{./Images/Relazione2_Foto/Combined_Figure_RBW_1kHz_10kHz_100kHz.png} 
+    \caption{Overlap di tre di tre misure diverse di DANL}
+    \label{fig:overlap_grafici_DANL}
+\end{figure}
+
+
 
 \chapter{Spettro di segnali elementari}
 Per questa valutazione di laboratorio abbiamo usato il generatore di segnali per generare vari 
