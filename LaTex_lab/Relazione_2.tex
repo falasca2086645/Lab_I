@@ -49,14 +49,14 @@ La misurazione è riassunta nel seguente figura \ref{fig:pna_sa}, l'obiettivo è
 Sullo schermo dello SPA (figura \ref{fig:1_1}) si osserva un picco in frequenza con portante 1.252 GHz ed una potenza di segnale di -21.267 dBm. Sul PNA Agilent avevamo impostato una potenza di segnale di -20dBm la differenza tra la potenza di segnale emesso e la potenza di segnale ricevuto è dovuto da contribuiti di perdite, come ad esempio le perdite lungo il cavo coassiale.
 
 
-\begin{figure} [H]
+\begin{figure}
     \centering
     \includegraphics[width=1\textwidth]{./Images/Relazione2_Foto/1_1_Misura_Sinusoide_1_5G_-20dBm_span_3Ghz_ref_level_10dBm_FIGURE.png} 
     \caption{Misura Sinusoide 1.5Ghz, Potenza segnale: -20dBm, span=3Ghz, ref\_level=10dBm}
     \label{fig:1_1}
 \end{figure}
-Per eseguire una misura maggiormente precisa andiamo a diminuire la Resolution Bandwidth (RBW), affinchè l'incertezza sul valore della frequenza sia minore come si vede nella formula \ref{formula_1}, ed allargandando conseguentemente lo SPAN per avere una visualizzazione migliore. Durante la misurazione abbiamo scelto una Resolution Bandwidth (RBW) = 30Hz ed uno SPAN = 1kHz. Ottenendo il grafico in figura \ref{fig:1_2}.
-\begin{equation}
+Per eseguire una misura maggiormente precisa andiamo a diminuire la Resolution Bandwidth (RBW), in modo che l'incertezza sul valore della frequenza sia minore come si vede nella formula \ref{formula_1}, ed allargandando conseguentemente lo SPAN per avere una visualizzazione migliore. Durante la misurazione abbiamo scelto una Resolution Bandwidth (RBW) = 30Hz ed uno SPAN = 1kHz. Ottenendo il grafico in figura \ref{fig:1_2}.
+\begin{equation} [H]
     Max. deviation = \pm (frequency \times Ref.frequency + 2\% \times SPAN+20\% \times RBW)
     \label{formula_1}
 \end{equation}
@@ -68,20 +68,46 @@ Per eseguire una misura maggiormente precisa andiamo a diminuire la Resolution B
     \label{fig:1_2}
 \end{figure}
 Il valore misurato della frequenza con incertezza è:
-\[ f = 1.250000 \pm 0.000001276 GHz\]
+\[ f = 1.2500000 \pm 0.0000013 GHz\]
 
 Sulla misura di potenza, il costruttore suggerisce un massimo di incertezza di 0.5 dB se:
- - i livelli di ampiezza sono compresi tra 10 e -70dBm;
- - RBW < 100kHz;
- - S/N >16 dB.
+\begin{itemize}
+\item i livelli di ampiezza sono compresi tra 10 e -70dBm;
+\item  RBW < 100kHz;
+\item  S/N >16 dB.
+\end{itemize}
  Tutte queste condizioni sono soddisfatte in particolar modo l'\(SNR = -21 dBm-(-85dBm) = 64 dB\).
  
-\[P_s = -21.0683 dBm \pm 0.5\ dB\]
-Per esprimere la misura in mW: \(P_(s,mW)) = 10^\frac{P_s,dBM}{10} = 7.82 \mu W\).
+\[P_s = -21.1 dBm \pm 0.5\ dB\]
+Per esprimere la misura in mW: \(P_s(mW) = 10^\frac{P_s,dBM}{10} = 7.82 \mu W\).
 \\
 Per convertire l'incertezza ne vado a valutare il valore percentuale:
 \[\Delta P_s = 100(10^\frac{0.5}{10}-1) = 12.2\%\]
-\[P_s = 0.007820 \pm 0.000954\ mW\]
+\[P_s = 0.00782 \pm 0.00096\ mW\]
+
+
+Un ultimo aspetto importante da analizzare è il contributo misurato a frequenze basse (tra 0 e qualche centinaio di KHz), non previsto dalla teoria. Questo fenomeno è legato al LO feedthrough, detto anche zero-frequency response, dovuto
+ all'accoppiamento parassita dell'oscillatore locale all'interno dello SPA.
+All'interno dello SPA abbiamo un mixer supereterodina, in cui il segnale in ingresso viene convertito in frequenza minore:
+\begin{equation}
+    f_{IF} = |f_{RF} - f_{LO}|
+\end{equation}
+Dove $f_{RF}$ è la frequenza del segnale a radiofrequenza applicato all'ingresso dello strumento, $f_{LO}$ è la frequenza
+ dell'oscillatore locale interno, utilizzato per effettuare la conversione, e $f_{IF}$ è la frequenza intermedia, alla quale
+ il segnale convertito viene filtrato e successivamente elaborato. Nel caso di conversione con $f_{LO}>f_{RF}$, si ha
+$f_{LO}=f_{RF}+f_{IF}$. Quando lo strumento analizza frequenze prossime a zero, risulta quindi $f_{LO}\simeq f_{IF}$.
+A causa dell'isolamento non ideale del mixer, parte del segnale dell'oscillatore locale può propagarsi direttamente verso gli
+stadi a frequenza intermedia, senza subire la conversione desiderata. Tale contributo può essere rilevato dallo strumento
+e visualizzato come una risposta spuria a basse frequenze.
+\\Questa valutazione rimane valida anche per le misurazioni dei paragrafi successivi, in cui compaiono contributi a
+ bassa frequenza non previsti per nessuno dei segnali misurati.
+
+
+
+
+
+
+
 
 \chapter{Misurazioni del DANL}
 Dopo aver configurato lo SPA con ingresso un carico da 50 \(\Omega\) vogliamo misurare la potenza di rumore dello strumento riportata in ingresso (Displayed Average Noise Level) a 1.5 GHz.
@@ -123,7 +149,7 @@ segnali periodici a 1MHz di frequenza e con ampiezza di picco di 1V (2V di ampie
  l'oscilloscopio digitale, in modo da avere una verifica preliminare del segnale generato
  tramite uno strumento a noi più consono. 
 \\Per tutte le misurazioni il generatore di segnale è stato impostato come impedenza di
- uscita $50\Omega$, poichè con il generatore usato si può impostare l'impedenza di uscita a
+ uscita $50\Omega$, poichè con il generatore usato è possibile impostare l'impedenza di uscita a
  $50\Omega$ oppure a "High Impedence". Ovviamente la scelta è stata fatta poiché il nostro SPA ha
 una impedenza di ingresso di $50\Omega$, e in questo modo abbiamo ottenuto il massimo
  adattamento, e coefficiente di riflessione nullo.
@@ -133,13 +159,13 @@ In questo caso abbiamo usato il generatore per ottenere un segnale sinusoidale c
 viste sopra. Per queste misurazioni abbiamo impostato la RBW a 1KHz, minimizzando anche qui il
  rumore senza ottenere variazioni del segnale o misurazioni troppo lente) e lo span a 50KHz.
 \\Per la misurazione abbiamo impostato il generatore a 1V di tensione picco-picco, poichè in questo
- caso il generatore, senza carico interno, generain maniera autonoma  una sinusoide a 2V di picco-picco,
- in modo che una volta attaccato a un carico da $50 \Omega$, come nel caso del SPA, sullo strumento
+ caso il generatore, senza carico interno, genera in maniera autonoma  una sinusoide a 2V di picco-picco,
+ in modo che una volta attaccato ad un carico da $50 \Omega$, come nel caso del SPA, sullo strumento
  arrivi metà della tensione del generatore in aperto. La Figura~\ref{fig:circuito_50ohm} mostra il
  circuito equivalente appena esposto.
 \\ Quindi, per vedere sull'oscilloscopio, che ha
  una impedenza di ingresso elevata ($1M\Omega$), un segnale a 1V di picco come da specifica
-dell'esercitazione abbiamo impostato il generatore a 1V di tensione picco-picco.
+dell'esercitazione, abbiamo impostato il generatore a 1V di tensione picco-picco.
 
 \begin{figure}[H]
     \centering
@@ -162,12 +188,12 @@ dell'esercitazione abbiamo impostato il generatore a 1V di tensione picco-picco.
     \label{fig:circuito_50ohm}
 \end{figure}
 
-Siamo passati poi a misurare il segnale con lo SPA e il segnale ottenuto è il seguente. Come nel
-caso precedente, per ottenere il segnale desiderato, abbiamo valutato la tensione picco-picco del
+Siamo passati poi a misurare il segnale con lo SPA e il segnale ottenuto è quello in Figura~\ref{fig:sinusoide_1MHz}.
+\\ Come nelcaso precedente, per ottenere il segnale desiderato, abbiamo valutato la tensione picco-picco del
 generatore da inserire in base all'impedenza di ingresso dello strumento di misura. Abbiamo quindi 
 impostato la tensione picco-picco del generatore a 1V, in modo da avere una sinusoide a 1V picco-picco
 in ingresso allo SPA, tenendo i valori impostati per l'oscilloscopio. 
-\\La misura è riportata nella Figura~\ref{fig:sinusoide_1MHz}.
+
 
 \begin{figure} [H]
 \centering
@@ -175,25 +201,25 @@ in ingresso allo SPA, tenendo i valori impostati per l'oscilloscopio.
 \caption{Segnale sinuoidale misurato tramite lo SPA.}
 \label{fig:sinusoide_1MHz}
 \end{figure}
-Il valore misurato  a $1.0002\pm 0.0012 MHz$ è $2.65dBm\pm+0.5 dB$.
+Il valore misurato  a $1.0002\pm 0.0012 MHz$ è $2.7dBm\pm+0.5 dB$.
 \\Prima di misurare ci aspettavamo dalla teoria un valore di circa 3.98dBm. Questo valore è stato
  ricavato tramite i seguenti passaggi:
 
 \begin{align}
 &V_p=1 V \\
-&V_{RMS}=\frac{V_p}{\sqrt{2}}=0.7071 \\
-&V_{SPA}=\frac{V_{RMS}}{2}=0.3536 \\
+&V_{RMS}=\frac{V_p}{\sqrt{2}}=0.7071 V \\
+&V_{SPA}=\frac{V_{RMS}}{2}=0.3536 V \\
 &P=\frac{V_x^2}{50}=0.0025W=2.5mW \\
-&P_{dbm}=10log_{10}(P(mW))=3.9794
+&P_{dbm}=10log_{10}(P(mW))=3.9794 dBm
 \end{align}
 
 Dove $V_p$ e $V_{RMS}$ sono le tensioni di picco dal generatore, quello che in Figura~\ref{fig:circuito_50ohm}
 è $V_1$,  mentre $V_{SPA}$ è la tensione in ingresso allo SPA, a causa degli effetti partitivi visti
  prima.
-\\Il valore teorico e quello medio misurato differiscono tra loro di 1.33dB, una differenza superiore all'
+\\Il valore teorico e quello medio misurato differiscono tra loro di circa 1.28dB, una differenza superiore all'
 errore massimo di misura dell'ampiezza (0.5 dB).
-\\Questo errore a prima vista inaspettato è legato alle perdite del cavo coassiale e dei connettori
-che collegano generatore e SPA, che introducono quindi delle perdite non trascurabili.
+\\Questo errore, a prima vista inaspettato, è legato alle perdite del cavo coassiale e dei connettori
+che collegano generatore e SPA; queste perdite sono quindi non trascurabili.
 
 \section{Misurazione di un'onda quadra con oscilloscopio e SPA}
 Siamo quindi passati ad utilizzare il generatore per ottenere un'onda quadra. Dopo aver fatto le
@@ -201,7 +227,7 @@ verifiche preliminari, come nel caso precedente, con l'oscilloscopio, siamo pass
 miusra del segnale con lo SPA. Le misure sono state prese con uno SPAN di
  8.606576 MHz e una RBW di 10KHz (banda più piccola possibile senza ottenere un 
 segnale troppo lento).
-\\Il segnale da generatore è stato impostato a $V_{pp}=1$ come nel caso precedente.
+\\Il segnale da generatore è stato impostato a $V_{pp}=1 V$ come nel caso precedente.
 \subsubsection{Misurazioni con la SPA}
 Dallo SPA otteniamo il seguente segnale.
 
@@ -214,11 +240,11 @@ Dallo SPA otteniamo il seguente segnale.
 
 Come si può vedere sui vari picchi misuriamo:
 \begin{itemize}
-\item $5.79 dBm \pm 0.05 dB $ a $0.00 +18 $ kHz\\
-\item $5.04 dBm \pm 0.05 dB$ a $1.00\pm 0.18 $ MHz\\
-\item $-4.72 dBm \pm 0.05 dB$ a $3.00\pm 0.18 $ MHz\\
-\item $-9.01 dBm \pm 0.05 dB$ a $5.00\pm 0.18 $ MHz\\
-\item $-12.14 dBm \pm 0.05 dB$ a $7.00\pm 0.18 $ MHz
+\item $5.8 dBm \pm 0.5 dB $ a $0.00 +18 $ kHz\\
+\item $5.0 dBm \pm 0.5 dB$ a $1.00\pm 0.18 $ MHz\\
+\item $-4.7 dBm \pm 0.5 dB$ a $3.00\pm 0.18 $ MHz\\
+\item $-9.0 dBm \pm 0.5 dB$ a $5.00\pm 0.18 $ MHz\\
+\item $-12.1 dBm \pm 0.5 dB$ a $7.00\pm 0.18 $ MHz
 \end{itemize}
 
 
@@ -233,7 +259,7 @@ Dove i segnali vengono da:
 x(t)&=\sum_{n=1}^\infty b_n sin(n\omega t), \qquad b_{2m}=0,\quad b_{2m+1}=\frac{4A}{\pi(2m+1)} \quad \text{Segnale dispari} \\
 x(t)&=\sum_{n=1}^\infty a_n cos(n\omega t), \qquad a_{2m}=0,\quad a_{2m+1}=(-1)^m\frac{4A}{\pi(2m+1)} \quad \text{Segnale pari}  
 \end{align}
-Dove A è l'ampiezza del segnale, valore di picco, e $\omega$ la pulsazione del segnale, $2\pi\cdot 1M \frac{rad}{s}$.
+Dove A è l'ampiezza del segnale, valore di picco, e $\omega$ la pulsazione del segnale, $2\pi\cdot 1M[ \frac{rad}{s}$].
 \\Nel nostro caso $A=0.5\,\mathrm{V}$. L'ampiezza di picco dell'armonica di ordine dispari $n$ e il suo valore efficace sono
 \begin{align}
 V_{n,\mathrm{p}}&=\frac{4A}{n\pi}, &
@@ -262,26 +288,9 @@ prima di considerare le perdite di cavi e connettori.
 \subsubsection{Confronto tra i valori misurati e i valori teorici}
 Confrontando i valori si nota che i valori misurati sono inferiori di poco più di 1dB (tra 1.04dB 1.32dB). Questa differenza
 è legata non ad errori nella teoria o nell'impostazione della misura, ma molto probabilmente alle perdite del cavo e dei
-connettori, che come esposto in precedenza non sono state valutate, e che abbiamo già visto avere un peso rilevante.
+connettori, che come esposto in precedenza, non sono state valutate, e che abbiamo già visto avere un peso rilevante.
 \\Possiamo quindi in conclusione ritenerci soddisfatti della misurazione.
-\\Un ultimo aspetto importante da analizzare è il contributo misurato a circa $f=Hz0$, non previsto dal modello teorico
-del paragrafo precedente. Leghiamo questo segnale al fenomeno del LO feedthrough, detto anche zero-frequency response,dovuto
- all'accoppiamento parassita dell'oscillatore locale all'interno dello SPA.
-All'interno dello SPA abbiamo un mixer supereterodina, in cui il segnale in ingresso viene convertito in frequenza minore:
-\begin{equation}
-    f_{IF} = |f_{RF} - f_{LO}|
-\end{equation}
-Dove $f_{RF}$ è la frequenza del segnale a radiofrequenza applicato all'ingresso dello strumento, $f_{LO}$ è la frequenza
- dell'oscillatore locale interno, utilizzato per effettuare la conversione, e $f_{IF}$ è la frequenza intermedia, alla quale
- il segnale convertito viene filtrato e successivamente elaborato. Nel caso di conversione con $f_{LO}>f_{RF}$, si ha
-$f_{LO}=f_{RF}+f_{IF}$. Quando lo strumento analizza frequenze prossime a zero, risulta quindi $f_{LO}\simeq f_{IF}$.
-A causa dell'isolamento non ideale del mixer, parte del segnale dell'oscillatore locale può propagarsi direttamente verso gli
-stadi a frequenza intermedia, senza subire la conversione desiderata. Tale contributo può essere rilevato dallo strumento
-e visualizzato come una risposta spuria in prossimità di $f=0$.
-\\Questa spiegazione è valida anche per il contributo a 0Hz presente al paragrafo precedente, dove abbiamo mostrato 
-la misurazione di un segnale sinusoidale.
-
-
+	
 \section{Confronto della misura con la FFT calcolata}
 Siamo passati poi ad utilizzare Matlab per calcolare la FFT (Fast Fourier Transform) della nostra 
 onda quadra. Il riusltato è il seguente:
@@ -319,14 +328,14 @@ $7$ & $1.31$ & $1.39$ \\
 
 \chapter{Risposta in frequenza di un filtro}
 In questa sezione valutiamo la risposta in frequenza di un filtro, connesso in serie tra cavo 
-coassiale econnettore di ingresso dello SPA.
-\\Per valutare la risposta in freuqneza del filtro è necessario fare uno sweep in frequenza dal 
+coassiale e connettore di ingresso dello SPA.
+\\Per valutare la risposta in frequenza del filtro è necessario fare uno sweep in frequenza dal 
 generatore; abbiamo impostato il generatore per fare uno sweep da 10MHz (il minimo del generatore)
  a 200MHz (frequenza acui ci aspettiamo di essere fuori banda), poi abbiamo messo lo sweep time a 20s
 e l'IF Bandwidth a 100Hz, in questo modo lo sweep risulta molto preciso e graduale, senza salti, oltre
 che visibile sullo schermo ad occhio umano.
 \\Lo SPA è stato impostato a 1MHz di RBW, banda più piccola possibile senza rendere le variazioni
-troppo lente, abbiamo impostato "Trace$\rightarrow$Max Hold in modo da non prdere i dati al variare
+troppo lente, abbiamo impostato "Trace$\rightarrow$Max Hold" in modo da non perdere i dati al variare
 della frequenza durante lo sweep.
 \\Si ottiene dalla misurazione il seguente grafico:
 \begin{figure} [H]
@@ -335,7 +344,7 @@ della frequenza durante lo sweep.
 \caption{Risposta in frequenza del filtro tra 0 e 200MHz.}
 \label{fig:filtro}
 \end{figure}
-Come si può notare in banda il filro fa passare un segnale a $-20.85 dBm\pm 0.05 dB $, mentre la
+Come si può notare in banda il filro fa passare un segnale a $-20.9 dBm\pm 0.5 dB $, mentre la
 frequenza di taglio a -3dB miusrata è a $114.93 \pm 4.21 MHz$.   
 
 
@@ -349,7 +358,7 @@ frequenza di taglio a -3dB miusrata è a $114.93 \pm 4.21 MHz$.
 \chapter{Misura del campo elettromagnetico di un'antenna}
 \chaptermark{Campo di un'antenna}
 \label{cap:campo}
-
+\section{Misurazione dei segnali nell'ambiente a massimo SPAN}
 In questa parte abbiamo collegato all'analizzatore di spettro (SPA) un'antenna biconica e abbiamo misurato i segnali radio presenti in laboratorio: prima su tutta la banda dello strumento (punto 5.1), poi nella banda della radio FM (punto 5.2). Infine abbiamo misurato il campo elettrico e magnetico del segnale più intenso, ripetendo la misura in tre posizioni ortogonali dell'antenna (punto 5.4).
 
 L'antenna è un dipolo biconico per la banda 80\,MHz--2.5\,GHz, collegato con un cavo coassiale all'ingresso dello SPA, un Siglent SVA1032X (9\,kHz--3.2\,GHz, 751 punti per traccia), come in Fig.~\ref{fig:5_setup}. 
@@ -377,17 +386,16 @@ L'antenna è un dipolo biconico per la banda 80\,MHz--2.5\,GHz, collegato con un
 \end{figure}
 
 % ---------------------------------------------------------------------
-\section{Segnali presenti nell'ambiente}
+\subsection{Segnali presenti nell'ambiente}
 \label{sec:5_1}
-
-\paragraph{Che cosa ci aspettiamo.} Fra 0 e 3.2\,GHz, in città, ci aspettiamo la radio FM (87.5--108\,MHz), la radio digitale DAB+ (174--230\,MHz), la televisione digitale (470--694\,MHz), le reti cellulari nelle bande a 700, 800, 900, 1800, 2100 e 2600\,MHz, i telefoni cordless DECT (1880--1900\,MHz) e il Wi-Fi a 2.4\,GHz. Le stazioni base delle reti cellulari trasmettono con continuità ma sono lontane; i telefoni, i DECT e i router Wi-Fi sono vicini ma trasmettono a impulsi. Per questo la practice chiede il \emph{max hold}, che per ogni frequenza conserva il valore più alto raggiunto durante l'acquisizione.
-
-\paragraph{Come abbiamo misurato.} Con l'antenna collegata abbiamo impostato tutta la banda dello strumento (full span, 0--3.2\,GHz) e la traccia in max hold, e l'abbiamo lasciata accumulare per circa dieci minuti prima di salvarla. Con 751 punti su 3.2\,GHz due punti consecutivi distano 4.27\,MHz. Per riconoscere i segnali, lo script stima il fondo della traccia con una mediana mobile su 51 punti (il fondo sale con la frequenza, da $-57$\,dBm a 100\,MHz a $-51$\,dBm a 3\,GHz), cerca i massimi locali almeno 3\,dB sopra il fondo e li assegna alla banda di servizio in cui cadono.
+ Fra 0 e 3.2\,GHz, in città, ci aspettiamo la radio FM (87.5--108\,MHz), la radio digitale DAB+ (174--230\,MHz), la televisione digitale (470--694\,MHz), le reti cellulari nelle bande a 700, 800, 900, 1800, 2100 e 2600\,MHz, i telefoni cordless DECT (1880--1900\,MHz) e il Wi-Fi a 2.4\,GHz. Le stazioni base delle reti cellulari trasmettono con continuità ma sono lontane; i telefoni, i DECT e i router Wi-Fi sono vicini ma trasmettono a impulsi. Per questo la practice chiede il \emph{max hold}, che per ogni frequenza conserva il valore più alto raggiunto durante l'acquisizione.
+Con l'antenna collegata abbiamo impostato tutta la banda dello strumento (full span, 0--3.2\,GHz) e la traccia in max hold,
+ e l'abbiamo lasciata accumulare per circa dieci minuti prima di salvarla. 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Images/Relazione2_Foto/5_1_full_span.png}
-\caption{Punto 5.1: spettro ricevuto dall'antenna su tutta la banda dello SPA, traccia in max hold (751 punti, 4.27\,MHz fra due punti). I triangoli segnano i picchi almeno 3\,dB sopra il fondo; 1800, 2100 e 2600 sono le bande in cui trasmettono i telefoni cellulari.}
+\caption{Punto 5.1: spettro ricevuto dall'antenna su tutta la banda dello SPA. I triangoli segnano i picchi almeno 3\,dB sopra il fondo; 1800, 2100 e 2600 sono le bande in cui trasmettono i telefoni cellulari.}
 \label{fig:5_1_fullspan}
 \end{figure}
 
@@ -411,9 +419,9 @@ $f$ [MHz] & $P$ [dBm] & sopra il fondo [dB] & servizio (banda) \\ \hline
 \label{tab:5_1_picchi}
 \end{table}
 
-\paragraph{Incertezza.} La formula della practice, $\delta f = \pm(f\cdot 10^{-6} + 2\%\cdot\mathrm{SPAN} + 20\%\cdot\mathrm{RBW})$, in full span dà $\pm 64$\,MHz, quasi tutti dovuti al termine $2\%\cdot\mathrm{SPAN}$. Il datasheet dello SPA indica per la lettura della frequenza $\pm(f\cdot\delta_{\mathrm{ref}} + 10\%\cdot\mathrm{RBW} + \tfrac12\,\mathrm{SPAN}/750 + 1\,\mathrm{Hz}) \simeq \pm 2.2$\,MHz, dominato dalla distanza fra i punti. Il valore realistico è il secondo: il picco DECT, che qui cade a 1885.9\,MHz, con lo span di 10\,MHz del punto 5.4 si trova a 1883.5\,MHz, cioè 2.4\,MHz più in basso, circa mezzo passo della traccia. Le potenze sono solo indicative: i picchi superano il fondo di 3--10\,dB, mentre l'incertezza di $\pm 0.5$\,dB della practice vale per un rapporto segnale/rumore maggiore di 16\,dB.
-
-\paragraph{Commento.} I segnali trovati sono quelli attesi. Le righe più alte sono quelle dei telefoni (bande di uplink a 1.8, 2.0 e 2.6\,GHz) e del DECT, sorgenti vicine e dentro l'edificio; delle stazioni base emerge solo quella LTE a 772\,MHz. La radio FM appare come un'unica riga a 102.4\,MHz perché a questa risoluzione tutta la banda cade in pochi punti: la risolviamo nel punto 5.2. Il Wi-Fi a 2.4\,GHz, che durante la misura abbiamo visto comparire sullo schermo, nella traccia salvata supera il fondo di soli 1.3\,dB; televisione, DAB+ e le altre bande delle stazioni base restano sotto il fondo, che in full span è alto perché la RBW è larga e il max hold conserva anche i massimi del rumore. Per vederli servirebbero uno span più stretto e una RBW più piccola, come nel punto successivo. La riga a 0\,Hz ($-4.3$\,dBm) non è un segnale ricevuto: è l'oscillatore locale dello SPA che passa attraverso il mixer fino al rivelatore.
+\subsection{Valutazione dell'incertezza} La formula dell'incertezza è la stessa del primo capitolo, $\delta f = \pm(f\cdot 10^{-6} + 2\%\cdot\mathrm{SPAN} + 20\%\cdot\mathrm{RBW})$, in full span dà $\pm 64$\,MHz, quasi tutti dovuti al termine $2\%\cdot\mathrm{SPAN}$.
+\\Iil picco DECT, che qui cade a 1885.9\,MHz, con lo span di 10\,MHz del punto 5.4 si trova a 1883.5\,MHz, cioè 2.4\,MHz più in basso, circa mezzo passo della traccia. Le potenze sono solo indicative: i picchi superano il fondo di 3--10\,dB, mentre l'incertezza di $\pm 0.5$\,dB della practice vale per un rapporto segnale/rumore maggiore di 16\,dB.
+\\ I segnali trovati sono quelli attesi. Le righe più alte sono quelle dei telefoni (bande di uplink a 1.8, 2.0 e 2.6\,GHz) e del DECT, sorgenti vicine e dentro l'edificio; delle stazioni base emerge solo quella LTE a 772\,MHz. La radio FM appare come un'unica riga a 102.4\,MHz perché a questa risoluzione tutta la banda cade in pochi punti: la risolviamo nel punto 5.2. Il Wi-Fi a 2.4\,GHz, che durante la misura abbiamo visto comparire sullo schermo, nella traccia salvata supera il fondo di soli 1.3\,dB; televisione, DAB+ e le altre bande delle stazioni base restano sotto il fondo, che in full span è alto perché la RBW è larga e il max hold conserva anche i massimi del rumore. Per vederli servirebbero uno span più stretto e una RBW più piccola, come nel punto successivo. La riga a 0\,Hz ($-4.3$\,dBm) non è un segnale ricevuto: è l'oscillatore locale dello SPA che passa attraverso il mixer fino al rivelatore.
 
 % ---------------------------------------------------------------------
 \section{Le tre radio FM più potenti}
