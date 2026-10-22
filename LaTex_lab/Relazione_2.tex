@@ -11,12 +11,6 @@
 \tableofcontents
 
 \mainmatter
- \chapter{Note!!!}
-Rifai figura 3.1, sinusuoide, con marker, e riedi conti. 
-\\incertezza SPA?? Rivedi cifre dopo la virgola.
-\\Mettere in primo capitolo, la pria volta che valutiamo le incertezze, le formule dell'errore.
-\\Metter espiegazione sulla componente in continua in primo capiotlo.
-\\Rivedi banda filtro. Basta così poco?
 
 
 \chapter{Misurazione di frequenza e ampiezza di un segnale sinusoidale}
@@ -505,9 +499,10 @@ L'antenna misura solo la componente del campo parallela al proprio asse. Il supp
 \end{figure}
 
 \subsection{Scelta del segnale e impostazioni}
-\paragraph{Il segnale.} Nella traccia full span acquisita con l'antenna nella prima posizione la riga più alta, esclusa quella a 0\,Hz, è a [1881.6\,MHz] ([-45.3]\,dBm): è il DECT già visto nel punto 5.1, un segnale vicino e stabile, e lo abbiamo scelto per la misura del campo.
-
-\paragraph{Che cosa ci aspettiamo.} Un apparecchio DECT trasmette al massimo 250\,mW di picco (24\,dBm). In spazio libero, a distanza $d$, una sorgente con potenza irradiata $P_{EIRP}$ produce $E = \sqrt{30\,P_{EIRP}}/d \simeq 2.7\,\mathrm{V}/d[\mathrm{m}]$: per una sorgente a 5--25\,m ci aspettiamo $|E|$ fra circa 0.1 e 0.5\,V/m. A 1.88\,GHz la lunghezza d'onda è 16\,cm, quindi a queste distanze siamo in campo lontano e la relazione $H = E/\eta_0$ vale.
+Lo SPA nella traccia impostata in full span acquisita con l'antenna nella prima posizione la riga più alta,
+che si trova a [1881.6\,MHz]con valore di ([-45.3]\,dBm): è il DECT già visto nel punto 5.1,
+ un segnale vicino e stabile, e lo abbiamo scelto per la misura del campo.
+ Un apparecchio DECT trasmette al massimo 250\,mW di picco (24\,dBm). In spazio libero, a distanza $d$, una sorgente con potenza irradiata $P_{EIRP}$ produce $E = \sqrt{30\,P_{EIRP}}/d \simeq 2.7\,\mathrm{V}/d[\mathrm{m}]$: per una sorgente a 5--25\,m ci aspettiamo $|E|$ fra circa 0.1 e 0.5\,V/m. A 1.88\,GHz la lunghezza d'onda è 16\,cm, quindi a queste distanze siamo in campo lontano e la relazione $H = E/\eta_0$ vale.
 
 \paragraph{Come abbiamo misurato.} Centro 1.88\,GHz, span 10\,MHz (con uno span di 2\,MHz il canale non entrava tutto nello schermo; con 10\,MHz si vede anche il fondo ai lati), RBW 300\,kHz come chiede la practice, attenuazione 0\,dB e traccia in max hold. Per ognuna delle tre posizioni abbiamo azzerato il max hold e salvato la traccia (Fig.~\ref{fig:5_4_tracce}); che l'azzeramento sia avvenuto lo conferma la traccia a $120^\circ$, più bassa di quella a $0^\circ$ in quasi tutto il canale. I massimi cadono fra 1883.47 e 1883.55\,MHz, a meno di 60\,kHz dalla portante DECT a 1883.520\,MHz (le portanti europee sono $1897.344 - c\cdot 1.728$\,MHz, qui $c = 8$): con un segnale modulato largo circa 1\,MHz il massimo della traccia non coincide esattamente con la portante.
 
@@ -528,18 +523,19 @@ Il fattore d'antenna a 1883.5\,MHz, interpolato sulla curva del datasheet (Fig.~
 \label{fig:5_4_af}
 \end{figure}
 
+
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.2}
 \begin{tabular}{c c c c c c}
 \hline
 posizione & $f$ [MHz] & $P_{RIC}$ [dBm] & $E$ [dBV/m] & $E$ [mV/m] & $H$ [mA/m] \\ \hline
-$\varphi = 0^\circ$   & [1883.55] & [-42.78] & [-16.8^{+2.4}_{-3.3}] & [145 \pm 46] & [0.38 \pm 0.12] \\
-$\varphi = 120^\circ$ & [1883.47] & [-46.29] & [-20.3^{+2.4}_{-3.3}] & [97 \pm 31]  & [0.256 \pm 0.082] \\
-$\varphi = 240^\circ$ & [1883.48] & [-41.35] & [-15.4^{+2.4}_{-3.3}] & [171 \pm 54] & [0.45 \pm 0.14] \\ \hline
-modulo & & & [-12.3^{+1.6}_{-1.9}] & [244 \pm 48] & [0.65 \pm 0.13] \\ \hline
+$\varphi = 0^\circ$   & 1883.55 & -42.78 & $-16.8^{+2.4}_{-3.3}$ & $145 \pm 46$  & $0.38 \pm 0.10$  \\
+$\varphi = 120^\circ$ & 1883.47 & -46.29 & $-20.3^{+2.4}_{-3.3}$ & $97 \pm 31$   & $0.256 \pm 0.07$ \\
+$\varphi = 240^\circ$ & 1883.48 & -41.35 & $-15.4^{+2.4}_{-3.3}$ & $171 \pm 54$  & $0.45 \pm 0.12$  \\
+modulo                &         &        & $-12.3^{+1.6}_{-1.9}$ & $244 \pm 48$  & $0.65 \pm 0.13$  \\ \hline
 \end{tabular}
-\caption{Potenza ricevuta e campo nelle tre posizioni dell'antenna, con $AF = 39.0$\,dB/m; il modulo è calcolato in V/m con la (\ref{eq:5_modulo}). Incertezze estese con $k = 2$ (\S\ref{sec:5_4_incertezza}); in dB l'intervallo è asimmetrico: $\pm 32\,\%$ sul campo corrisponde a $+2.4/-3.3$\,dB.}
+\caption{Potenza ricevuta e campo nelle tre posizioni dell'antenna, con $AF = 39.0$\,dB/m; il modulo...}
 \label{tab:5_4_campo}
 \end{table}
 
@@ -628,12 +624,14 @@ Così lo SPA vede soprattutto il segnale prodotto dal diodo, e fondamentale e ar
 \label{fig:6_setup}
 \end{figure}
 
-\section{Scelta della frequenza e impostazioni}
-Le prime tre armoniche devono cadere nella banda dell'accoppiatore, che parte da circa 0.7\,GHz, e la terza anche sotto il limite dello SPA, 3.2\,GHz. Quindi $f_0 \gtrsim 0.7$\,GHz e $3f_0 \le 3.2$\,GHz, cioè $f_0 \lesssim 1.07$\,GHz: abbiamo scelto $f_0 = 800$\,MHz, con le righe a 0.8, 1.6 e 2.4\,GHz.
+Le prime tre armoniche devono cadere nella banda dell'accoppiatore, che parte da circa 0.7\,GHz,
+ e in quella dello SPA, che arriva a 3.2\,GHz. Quindi $f_0 \gtrsim 0.7$\,GHz e $3f_0 \le 3.2$\,GHz;
+ abbiamo scelto $f_0 = 800$\,MHz, in modo da avere tre segnali, a 0.8, 1.6 e 2.4\,GHz.
 
-Sullo SPA abbiamo impostato start 400\,MHz e stop 2.8\,GHz (da $f_0/2$ a $3.5\,f_0$), RBW 30\,kHz per tenere basso il fondo (circa $-86$\,dBm) e attenuazione 0\,dB. Con 751 punti su 2.4\,GHz due punti distano 3.2\,MHz, e con questo span le tre frequenze cadono esattamente su punti della traccia ($400 + 3.2\,n$\,MHz). La RBW stretta rende la scansione lenta, qualche secondo, ma con un tono fisso non è un problema.
+Sullo SPA abbiamo impostato start 400\,MHz e stop 2.8\,GHz (da $f_0/2$ a $3.5\,f_0$), RBW 30\,kHz per tenere
+ basso il fondo (circa $-86$\,dBm) senza rendere la visualizzazione sullo SPA troppo lenta, e attenuazione 0\,dB.
 
-\section{Risultati}
+\section{Risultati della misurazione}
 I livelli delle tre righe sono nella Tabella~\ref{tab:6_armoniche}; la traccia acquisita è in Fig.~\ref{fig:6_armoniche}.
 
 \begin{table}[H]
@@ -653,11 +651,11 @@ $3f_0$ & [2400] & $[-75.7]$ & $[-27.9]$ & [7] \\ \hline
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Images/Relazione2_Foto/6_armoniche_diodo.png}
-\caption{Punto 6: spettro alla porta CPL con il diodo pilotato a $f_0 = 800$\,MHz; start 400\,MHz, stop 2.8\,GHz, RBW 30\,kHz, attenuazione 0\,dB, 751 punti.}
+\caption{Spettro alla porta CPL con il diodo pilotato a $f_0 = 800$\,MHz; span da 400\,MHz a 2.8\,GHz, RBW 30\,kHz, attenuazione 0\,dB.}
 \label{fig:6_armoniche}
 \end{figure}
 
-\paragraph{Incertezza.} Per ogni livello la practice indica un errore massimo di $\pm 0.5$\,dB, valido se il rapporto segnale/rumore supera 16\,dB. Il rapporto in dBc è la differenza di due letture: con distribuzione rettangolare $u = \sqrt2 \cdot 0.5/\sqrt3 = 0.41$\,dB, e con $k = 2$ l'incertezza estesa è $\pm 0.8$\,dB. La terza armonica supera il fondo di soli 7\,dB, fuori dalle condizioni della practice: il rumore che si somma alla riga ne alza la lettura di circa 0.9\,dB, e togliendo il contributo del fondo il livello diventa $-76.6$\,dBm, cioè $-28.8$\,dBc.
+ Per la potenza l'errore massimo è di $\pm 0.5$\,dB, valido se il rapporto segnale/rumore supera 16\,dB. Il rapporto in dBc è la differenza di due letture: con distribuzione rettangolare $u = \sqrt2 \cdot 0.5/\sqrt3 = 0.41$\,dB, e con $k = 2$ l'incertezza estesa è $\pm 0.8$\,dB. La terza armonica supera il fondo di soli 7\,dB, fuori dalle condizioni necessaria per poter usare questo errore: il rumore che si somma alla riga ne alza la lettura di circa 0.9\,dB, e togliendo il contributo del fondo il livello diventa $-76.6$\,dBm, cioè $-28.8$\,dBc.
 
 \paragraph{Da dove vengono le armoniche.} Per attribuire le righe al diodo bisogna escludere le altre due sorgenti possibili.
 \begin{itemize}
@@ -668,9 +666,6 @@ La seconda armonica è quindi una misura solida del diodo: $[-21.5 \pm 0.8]$\,dB
 
 \section{Commento}
 I risultati sono quelli attesi: le armoniche ci sono e decrescono con l'ordine, la terza più bassa della seconda. Il confronto in dBc risente della risposta in frequenza dell'accoppiatore, dei cavi e dello SPA fra 0.8 e 2.4\,GHz, che non abbiamo calibrato (per lo SPA il datasheet indica una planarità di $\pm 0.8$\,dB). Inoltre i valori in dBc valgono per la potenza di sorgente usata: poiché la seconda armonica cresce di 2\,dB e la terza di 3\,dB per ogni dB in più, ripetere la misura a due o tre potenze diverse permetterebbe di verificare queste pendenze. Infine, una misura con un carico da 50\,$\Omega$ al posto del diodo avrebbe dato direttamente il residuo dovuto a sorgente e accoppiatore, da sottrarre alle righe misurate.
-
-
-
 
 \end{document}
 
