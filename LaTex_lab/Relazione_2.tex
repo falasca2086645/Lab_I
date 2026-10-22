@@ -46,7 +46,7 @@ La misurazione è riassunta nel seguente figura \ref{fig:pna_sa}, l'obiettivo è
     \label{fig:pna_sa}
 \end{figure}
 
-Sullo schermo dello SPA (figura \ref{fig:1_1}) si osserva un picco in frequenza con portante 1.252 GHz ed una potenza di segnale di -21.267 dBm. Sul PNA Agilent avevamo impostato una potenza di segnale di -20dBm la differenza tra la potenza di segnale emesso e la potenza di segnale ricevuto è dovuto da contribuiti di perdite, come ad esempio le perdite lungo il cavo coassiale.
+Sullo schermo dello SPA (figura \ref{fig:1_1}) si osserva un picco in frequenza con portante [1.252 GHz] ed una potenza di segnale di [-21.267 dBm]. Sul PNA Agilent avevamo impostato una potenza di segnale di -20dBm la differenza tra la potenza di segnale emesso e la potenza di segnale ricevuto è dovuto da contribuiti di perdite, come ad esempio le perdite lungo il cavo coassiale.
 
 
 \begin{figure}
@@ -68,7 +68,7 @@ Per eseguire una misura maggiormente precisa andiamo a diminuire la Resolution B
     \label{fig:1_2}
 \end{figure}
 Il valore misurato della frequenza con incertezza è:
-\[ f = 1.2500000 \pm 0.0000013 GHz\]
+\[ f = [1.2500000 \pm 0.0000013 GHz]\]
 
 Sulla misura di potenza, il costruttore suggerisce un massimo di incertezza di 0.5 dB se:
 \begin{itemize}
@@ -78,12 +78,12 @@ Sulla misura di potenza, il costruttore suggerisce un massimo di incertezza di 0
 \end{itemize}
  Tutte queste condizioni sono soddisfatte in particolar modo l'\(SNR = -21 dBm-(-85dBm) = 64 dB\).
  
-\[P_s = -21.1 dBm \pm 0.5\ dB\]
+\[P_s = [-21.1 dBm \pm 0.5\ dB]\]
 Per esprimere la misura in mW: \(P_s(mW) = 10^\frac{P_s,dBM}{10} = 7.82 \mu W\).
 \\
 Per convertire l'incertezza ne vado a valutare il valore percentuale:
 \[\Delta P_s = 100(10^\frac{0.5}{10}-1) = 12.2\%\]
-\[P_s = 0.00782 \pm 0.00096\ mW\]
+\[P_s = [0.00782 \pm 0.00096\ mW]\]
 
 
 Un ultimo aspetto importante da analizzare è il contributo misurato a frequenze basse (tra 0 e qualche centinaio di KHz), non previsto dalla teoria. Questo fenomeno è legato al LO feedthrough, detto anche zero-frequency response, dovuto
@@ -113,7 +113,7 @@ e visualizzato come una risposta spuria a basse frequenze.
 Dopo aver configurato lo SPA con ingresso un carico da 50 \(\Omega\) vogliamo misurare la potenza di rumore dello strumento riportata in ingresso (Displayed Average Noise Level) a 1.5 GHz.
 
 Sullo SPA sono state adoperate le seguenti impostazioni: Center Frequency = 1.5 GHz; SPAN = 1 MHz; RBW = 10 kHz; RBW/VBW = 10; Attenuation = 0 dB. Utilizzando le funzioni “Detector Sample” e “Trace Average” fornite dallo SPA, è stato valutato il DANL(figura \ref{fig:DANL}), il quale è strettamente dipende dalla banda ovvero dal RBW:
-\[DANL@10kHz = -102.119 dBm\]
+\[DANL@10kHz = [-102.119 dBm]\]
 
 Dalla teoria sappiamo che ogni fattore 10 di RBW sposta il DANL di 10 dB, come si osserva nella seguente formula:
 \[DANL@1Hz = DANL@RBW -10log\frac{RBW}{1Hz} \]
@@ -127,11 +127,11 @@ Di conseguenza:
 \end{figure}
 La verifica sperimentale di questo concetto teorico è fatto in figura \ref{fig:overlap_grafici_DANL} e si osserva come alla diminuzione di un fattore 10 della RBW entra di fatto meno rumore medio nello strumento inteso come un abbassamento di 10 dB del DANL.
 \\
-La curva verde rappresenta il DANL@100kHz = -92.3095 dBm. 
+La curva verde rappresenta il DANL@100kHz = [-92.3095 dBm]. 
 \\
-La curva rossa rappresenta il DANL@10kHz = -102.119 dBm. 
+La curva rossa rappresenta il DANL@10kHz = [-102.119 dBm]. 
 \\
-La curva blu rappresenta il DANL@1kHz = -111.856 dBm. 
+La curva blu rappresenta il DANL@1kHz = [-111.856 dBm]. 
 
 \begin{figure} [H]
     \centering
@@ -201,7 +201,7 @@ in ingresso allo SPA, tenendo i valori impostati per l'oscilloscopio.
 \caption{Segnale sinuoidale misurato tramite lo SPA.}
 \label{fig:sinusoide_1MHz}
 \end{figure}
-Il valore misurato  a $1.0002\pm 0.0012 MHz$ è $2.7dBm\pm+0.5 dB$.
+Il valore misurato  a $[1.0002\pm 0.0012 MHz]$ è $[2.7dBm\pm+0.5 dB]$.
 \\Prima di misurare ci aspettavamo dalla teoria un valore di circa 3.98dBm. Questo valore è stato
  ricavato tramite i seguenti passaggi:
 
@@ -240,11 +240,11 @@ Dallo SPA otteniamo il seguente segnale.
 
 Come si può vedere sui vari picchi misuriamo:
 \begin{itemize}
-\item $5.8 dBm \pm 0.5 dB $ a $0.00 +18 $ kHz\\
-\item $5.0 dBm \pm 0.5 dB$ a $1.00\pm 0.18 $ MHz\\
-\item $-4.7 dBm \pm 0.5 dB$ a $3.00\pm 0.18 $ MHz\\
-\item $-9.0 dBm \pm 0.5 dB$ a $5.00\pm 0.18 $ MHz\\
-\item $-12.1 dBm \pm 0.5 dB$ a $7.00\pm 0.18 $ MHz
+\item $[5.8 dBm \pm 0.5 dB]$ a $[0.00 +18]$ kHz\\
+\item $[5.0 dBm \pm 0.5 dB]$ a $[1.00\pm 0.18]$ MHz\\
+\item $[-4.7 dBm \pm 0.5 dB]$ a $[3.00\pm 0.18]$ MHz\\
+\item $[-9.0 dBm \pm 0.5 dB]$ a $[5.00\pm 0.18]$ MHz\\
+\item $[-12.1 dBm \pm 0.5 dB]$ a $[7.00\pm 0.18]$ MHz
 \end{itemize}
 
 
@@ -344,8 +344,8 @@ della frequenza durante lo sweep.
 \caption{Risposta in frequenza del filtro tra 0 e 200MHz.}
 \label{fig:filtro}
 \end{figure}
-Come si può notare in banda il filro fa passare un segnale a $-20.9 dBm\pm 0.5 dB $, mentre la
-frequenza di taglio a -3dB miusrata è a $114.93 \pm 4.21 MHz$.   
+Come si può notare in banda il filro fa passare un segnale a $[-20.9 dBm\pm 0.5 dB]$, mentre la
+frequenza di taglio a -3dB miusrata è a $[114.93 \pm 4.21 MHz]$.   
 
 
 % =====================================================================
@@ -445,10 +445,10 @@ $f$ [MHz] & $P$ [dBm] & sopra il fondo [dB] & servizio (banda) \\ \hline
 \hline
  & $f$ del massimo & $f$ baricentro & $P$ & emittente \\
  & [MHz] & [MHz] & [dBm] & (frequenza nominale) \\ \hline
-1 & 101.88 & 101.901 & $-59.4 \pm 0.5$ & Dimensione Suono Roma (101.9\,MHz) \\
-2 & 101.68 & 101.700 & $-60.1 \pm 0.5$ & Radio Evangelo Roma (101.7\,MHz) \\
-3 & 100.00 & 100.000 & $-64.1 \pm 0.5$ & R101 (100.0\,MHz) \\ \hline
-(4) & 103.48 & 103.499 & $-64.5 \pm 0.5$ & Rai Isoradio (103.5\,MHz) \\ \hline
+1 & [101.88] & [101.901] & $[-59.4 \pm 0.5]$ & Dimensione Suono Roma (101.9\,MHz) \\
+2 & [101.68] & [101.700] & $[-60.1 \pm 0.5]$ & Radio Evangelo Roma (101.7\,MHz) \\
+3 & [100.00] & [100.000] & $[-64.1 \pm 0.5]$ & R101 (100.0\,MHz) \\ \hline
+(4) & [103.48] & [103.499] & $[-64.5 \pm 0.5]$ & Rai Isoradio (103.5\,MHz) \\ \hline
 \end{tabular}
 \caption{Le tre emittenti FM più potenti; la quarta è riportata perché è a soli 0.4\,dB dalla terza. Tutte e quattro trasmettono da Monte Cavo.}
 \label{tab:5_2_radio}
@@ -505,7 +505,7 @@ L'antenna misura solo la componente del campo parallela al proprio asse. Il supp
 \end{figure}
 
 \subsection{Scelta del segnale e impostazioni}
-\paragraph{Il segnale.} Nella traccia full span acquisita con l'antenna nella prima posizione la riga più alta, esclusa quella a 0\,Hz, è a 1881.6\,MHz ($-45.3$\,dBm): è il DECT già visto nel punto 5.1, un segnale vicino e stabile, e lo abbiamo scelto per la misura del campo.
+\paragraph{Il segnale.} Nella traccia full span acquisita con l'antenna nella prima posizione la riga più alta, esclusa quella a 0\,Hz, è a [1881.6\,MHz] ([-45.3]\,dBm): è il DECT già visto nel punto 5.1, un segnale vicino e stabile, e lo abbiamo scelto per la misura del campo.
 
 \paragraph{Che cosa ci aspettiamo.} Un apparecchio DECT trasmette al massimo 250\,mW di picco (24\,dBm). In spazio libero, a distanza $d$, una sorgente con potenza irradiata $P_{EIRP}$ produce $E = \sqrt{30\,P_{EIRP}}/d \simeq 2.7\,\mathrm{V}/d[\mathrm{m}]$: per una sorgente a 5--25\,m ci aspettiamo $|E|$ fra circa 0.1 e 0.5\,V/m. A 1.88\,GHz la lunghezza d'onda è 16\,cm, quindi a queste distanze siamo in campo lontano e la relazione $H = E/\eta_0$ vale.
 
@@ -534,10 +534,10 @@ Il fattore d'antenna a 1883.5\,MHz, interpolato sulla curva del datasheet (Fig.~
 \begin{tabular}{c c c c c c}
 \hline
 posizione & $f$ [MHz] & $P_{RIC}$ [dBm] & $E$ [dBV/m] & $E$ [mV/m] & $H$ [mA/m] \\ \hline
-$\varphi = 0^\circ$   & 1883.55 & $-42.78$ & $-16.8^{+2.4}_{-3.3}$ & $145 \pm 46$ & $0.38 \pm 0.12$ \\
-$\varphi = 120^\circ$ & 1883.47 & $-46.29$ & $-20.3^{+2.4}_{-3.3}$ & $97 \pm 31$  & $0.256 \pm 0.082$ \\
-$\varphi = 240^\circ$ & 1883.48 & $-41.35$ & $-15.4^{+2.4}_{-3.3}$ & $171 \pm 54$ & $0.45 \pm 0.14$ \\ \hline
-modulo & & & $-12.3^{+1.6}_{-1.9}$ & $244 \pm 48$ & $0.65 \pm 0.13$ \\ \hline
+$\varphi = 0^\circ$   & [1883.55] & [-42.78] & [-16.8^{+2.4}_{-3.3}] & [145 \pm 46] & [0.38 \pm 0.12] \\
+$\varphi = 120^\circ$ & [1883.47] & [-46.29] & [-20.3^{+2.4}_{-3.3}] & [97 \pm 31]  & [0.256 \pm 0.082] \\
+$\varphi = 240^\circ$ & [1883.48] & [-41.35] & [-15.4^{+2.4}_{-3.3}] & [171 \pm 54] & [0.45 \pm 0.14] \\ \hline
+modulo & & & [-12.3^{+1.6}_{-1.9}] & [244 \pm 48] & [0.65 \pm 0.13] \\ \hline
 \end{tabular}
 \caption{Potenza ricevuta e campo nelle tre posizioni dell'antenna, con $AF = 39.0$\,dB/m; il modulo è calcolato in V/m con la (\ref{eq:5_modulo}). Incertezze estese con $k = 2$ (\S\ref{sec:5_4_incertezza}); in dB l'intervallo è asimmetrico: $\pm 32\,\%$ sul campo corrisponde a $+2.4/-3.3$\,dB.}
 \label{tab:5_4_campo}
@@ -569,11 +569,11 @@ u_r(|E|) = \frac{\sqrt{E_1^4 u_{r}^2 + E_2^4 u_{r}^2 + E_3^4 u_{r}^2}}{|E|^2}
 \end{equation}
 e con $k = 2$ l'incertezza estesa è $U = 19.9\,\%$:
 \begin{equation}
-|E| = (0.244 \pm 0.048)\ \mathrm{V/m}, \qquad |H| = (0.65 \pm 0.13)\ \mathrm{mA/m} \qquad (k = 2).
+|E| = [0.244 \pm 0.048] \mathrm{V/m}, \qquad |H| = [0.65 \pm 0.13] \mathrm{mA/m} \qquad (k = 2).
 \end{equation}
 
 \subsection{Commento}
-Il risultato rientra nell'intervallo atteso: con 250\,mW di picco, $|E| = 0.244$\,V/m corrisponde a una sorgente a circa 11\,m, compatibile con un apparecchio DECT nell'edificio. Le tre componenti hanno pesi diversi (il 49\,\% della potenza cade sulla posizione a $240^\circ$, il 16\,\% su quella a $120^\circ$): il campo è polarizzato, come ci si aspetta da un singolo trasmettitore.
+Il risultato rientra nell'intervallo atteso: con 250\,mW di picco, $|E| = [0.244]$\,V/m corrisponde a una sorgente a circa [11\,m], compatibile con un apparecchio DECT nell'edificio. Le tre componenti hanno pesi diversi (il 49\,\% della potenza cade sulla posizione a $240^\circ$, il 16\,\% su quella a $120^\circ$): il campo è polarizzato, come ci si aspetta da un singolo trasmettitore.
 
 % =====================================================================
 %  CAPITOLO 6 - Armoniche di un diodo Schottky
@@ -642,9 +642,9 @@ I livelli delle tre righe sono nella Tabella~\ref{tab:6_armoniche}; la traccia a
 \begin{tabular}{c c c c c}
 \hline
 riga & $f$ [MHz] & $P$ [dBm] & rispetto a $f_0$ [dBc] & segnale/rumore [dB] \\ \hline
-$f_0$  & 800  & $-47.8 \pm 0.5$ & 0 & 39 \\
-$2f_0$ & 1600 & $-69.3 \pm 0.5$ & $-21.5 \pm 0.8$ & 17 \\
-$3f_0$ & 2400 & $-75.7$ & $-27.9$ & 7 \\ \hline
+$f_0$  & [800]  & $[-47.8 \pm 0.5]$ & [0] & [39] \\
+$2f_0$ & [1600] & $[-69.3 \pm 0.5]$ & $[-21.5 \pm 0.8]$ & [17] \\
+$3f_0$ & [2400] & $[-75.7]$ & $[-27.9]$ & [7] \\ \hline
 \end{tabular}
 \caption{Livelli delle prime tre armoniche alla porta CPL. Incertezze estese ($k = 2$); per la terza armonica vedi il testo.}
 \label{tab:6_armoniche}
@@ -664,7 +664,7 @@ $3f_0$ & 2400 & $-75.7$ & $-27.9$ & 7 \\ \hline
   \item \textbf{Lo SPA.} Il suo mixer genera armoniche se il segnale d'ingresso è forte. Qui la fondamentale arriva a $-47.8$\,dBm con attenuazione 0\,dB: con un intercetto di seconda armonica di $+45$\,dBm (datasheet), la seconda armonica prodotta dallo strumento sarebbe $2 \times (-47.8) - 45 \simeq -141$\,dBm, ben sotto il fondo.
   \item \textbf{La sorgente.} Anche il generatore produce armoniche, che seguono lo stesso percorso della fondamentale. Nella traccia \texttt{Prima\_Misura}, la prova di acquisizione fatta all'inizio dell'esercitazione con la sorgente del banco a 800\,MHz collegata allo SPA (fondamentale a $-1.2$\,dBm), le armoniche della sorgente sono a $-41.0$\,dBc (seconda) e $-37.8$\,dBc (terza): 19.5\,dB e 9.9\,dB sotto quelle misurate con il diodo. Se nel punto 6 la sorgente lavorava alla stessa potenza, queste righe, sommandosi in ampiezza con fase ignota a quelle del diodo, possono spostare la seconda armonica di circa $\pm 1$\,dB e la terza fino a $+2.4/-3.4$\,dB.
 \end{itemize}
-La seconda armonica è quindi una misura solida del diodo: $(-21.5 \pm 0.8)$\,dBc, con al più 1\,dB di incertezza aggiuntiva dovuta alla sorgente. La terza è indicativa: fra $-28$ e $-29$\,dBc con un'incertezza di qualche dB.
+La seconda armonica è quindi una misura solida del diodo: $[-21.5 \pm 0.8]$\,dBc, con al più 1\,dB di incertezza aggiuntiva dovuta alla sorgente. La terza è indicativa: fra $-28$ e $-29$\,dBc con un'incertezza di qualche dB.
 
 \section{Commento}
 I risultati sono quelli attesi: le armoniche ci sono e decrescono con l'ordine, la terza più bassa della seconda. Il confronto in dBc risente della risposta in frequenza dell'accoppiatore, dei cavi e dello SPA fra 0.8 e 2.4\,GHz, che non abbiamo calibrato (per lo SPA il datasheet indica una planarità di $\pm 0.8$\,dB). Inoltre i valori in dBc valgono per la potenza di sorgente usata: poiché la seconda armonica cresce di 2\,dB e la terza di 3\,dB per ogni dB in più, ripetere la misura a due o tre potenze diverse permetterebbe di verificare queste pendenze. Infine, una misura con un carico da 50\,$\Omega$ al posto del diodo avrebbe dato direttamente il residuo dovuto a sorgente e accoppiatore, da sottrarre alle righe misurate.
