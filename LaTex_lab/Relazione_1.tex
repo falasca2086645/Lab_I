@@ -232,6 +232,70 @@ In conclusione: il modello della practice segue bene l'andamento della misura ($
 
 %----Cap 7------
 \chapter{Misura di impedenza e permettività di una microstriscia}
+ 
+\section{Misura dell'impedenza caratteristica}
+\subsection{Microstriscia larga}
+Per la misurazione avevamo due microstrice, che distingueremo in seguito come "microstriscia larga" e "microstriscia stretta" in base 
+alla larghezza del metallo della microstriscia. Per
+entrambe le microstrisce abbiamo usato la tecnica di trasformazione a "$\lambda/4$" e e la tecnica di misura "corto circuito-
+circuito aperto". Tutte le misurazioni sono state fatte tra 2MHz e 200MHz, con calibrazione dello strumento in queste frequenze.
+\\Per prima abbiamo valutato la microstriscia larga. Graficata l'impedenza misurata ci siamo spostati con il marker fino al punto 
+in cui la parte immaginaria è nulla (non esattamente nulla, ma il valore più piccolo riscontrato). In questo punto l'impedenza vale:
+\begin{equation}
+Z_{IN}=12.37 +j0.2 \quad \Omega
+\end{equation}
+Da ciò l'impedenza caratteristica è:
+\begin{equation}
+Z_C=\sqrt{Z_{in}\cdot Z_0}=\sqrt{12.37\cdot50}\simeq 24.87 \quad \Omega
+\end{equation}
+Siamo passati poi a valutare la stessa impedenza tramite il secondo metodo. In questo caso sono necessarie due misurazioni, 
+una con chiusura in circuito aperto (impedenza indicata con $Z_{OL}$) e una con chiusura in corto (impedenza indicata con $Z_{SC}$.
+ Siamo partiti con la misura in circuito aperto, e ci siamo tenuti a basse frequenze per tenere l'impedenza il più possibile immaginaria.
+A 50MHz abbiamo misurato: 
+\begin{equation}
+Z_{OL}=0.845-j32 \quad \Omega
+\end{equation}
+\begin{figure} [H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{./Images/Relazione1_Foto/7_1_microstrip_larga_aperto.png}
+\caption{Smith chart con chiusura in circuito aperto misurata tra 1MHz e 100MHz.}
+\end{figure}
+
+
+Ripetendo la misura alla stessa frequenza chiudendo il circuito in corto circuito abbiamo misurato:
+\begin{equation}
+Z_{SC}=0.6+j 20.32 \quad \Omega
+\end{equation}
+\begin{figure} [H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{./Images/Relazione1_Foto/7_1_microstrip_larga_corto.png}
+\caption{Smith chart con chiusura in corto circuito misurata tra 1MHz e 100MHz.}
+\end{figure}
+
+
+Da queste misurazioni ricaviamo l'impedenza caratteristica come:
+\begin{equation}
+Z_C=\sqrt{Z_{OC}\cdot Z_{SC}}=25.5 \quad \Omega %ricorda formula
+\end{equation}
+Come si nota facilmente le due misurazioni danno valori molto vicini tra loro.
+\subsection{Microstriscia stretta}
+Applichiamo i due metodi anche alla seconda microstriscia. Siamo partiti sempre dalla misurazione tramite la tecnica a "$\lambda/4$", e abbiamo ottenuto il seguente grafico:
+\begin{figure} [H]
+\centering
+\includegraphics[width=0.6\textwidth]{./Images/Relazione1_Foto/7_1_microstrip_stretta_lambda_quarti.png}
+\caption{Smith chart dell'impedenza tramite tecnica "$\lambda/4$".}
+\end{figure}
+Il valore misurato è:
+\begin{equation}
+Z_{IN}=95.36 - j0.4 \quad \Omega
+\end{equation}
+E quindi ricaviamo:
+\begin{equation}
+Z_C=\sqrt{Z_{in}\cdot Z_0}=\sqrt{95.36\cdot50}\simeq 69.05 \quad \Omega
+\end{equation}
+
+
+
 
 
 \end{document}
