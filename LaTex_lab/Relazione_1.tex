@@ -244,6 +244,13 @@ in cui la parte immaginaria è nulla (non esattamente nulla, ma il valore più p
 \begin{equation}
 Z_{IN}=12.37 +j0.2 \quad \Omega
 \end{equation}
+
+\begin{figure} [H]
+\centering
+\includegraphics[width=0.4\textwidth]{./Images/Relazione1_Foto/7_1_microstrip_larga_lambda_quarti.png}
+\caption{Smith chart dell'impedenza tramite tecnica "$\lambda/4$".}
+\end{figure}
+
 Da ciò l'impedenza caratteristica è:
 \begin{equation}
 Z_C=\sqrt{Z_{in}\cdot Z_0}=\sqrt{12.37\cdot50}\simeq 24.87 \quad \Omega
@@ -257,7 +264,7 @@ Z_{OL}=0.845-j32 \quad \Omega
 \end{equation}
 \begin{figure} [H]
   \centering
-  \includegraphics[width=0.6\textwidth]{./Images/Relazione1_Foto/7_1_microstrip_larga_aperto.png}
+  \includegraphics[width=0.4\textwidth]{./Images/Relazione1_Foto/7_1_microstrip_larga_aperto.png}
 \caption{Smith chart con chiusura in circuito aperto misurata tra 1MHz e 100MHz.}
 \end{figure}
 
@@ -268,21 +275,27 @@ Z_{SC}=0.6+j 20.32 \quad \Omega
 \end{equation}
 \begin{figure} [H]
   \centering
-  \includegraphics[width=0.6\textwidth]{./Images/Relazione1_Foto/7_1_microstrip_larga_corto.png}
+  \includegraphics[width=0.4\textwidth]{./Images/Relazione1_Foto/7_1_microstrip_larga_corto.png}
 \caption{Smith chart con chiusura in corto circuito misurata tra 1MHz e 100MHz.}
 \end{figure}
 
+Dalla teoria sappiamo che:
+  \begin{align}
+  Z_{SC} &= j\,Z_C \tan(\beta l) \\
+  Z_{OC} &= -j\,Z_C \cot(\beta l) \\
+  Z_C &= \sqrt{Z_{SC}\cdot Z_{OC}}
+  \end{align}
 
-Da queste misurazioni ricaviamo l'impedenza caratteristica come:
+Da queste misurazioni valutiamo l'impedenza caratteristica, trascurando le parti reali delle due impedenze dovute a non idealità e che sono molto minori rispetto alle parti immaginarie, come:
 \begin{equation}
-Z_C=\sqrt{Z_{OC}\cdot Z_{SC}}=25.5 \quad \Omega %ricorda formula
+Z_C=\sqrt{Z_{OC}\cdot Z_{SC}}=25.5 \quad \Omega 
 \end{equation}
 Come si nota facilmente le due misurazioni danno valori molto vicini tra loro.
 \subsection{Microstriscia stretta}
 Applichiamo i due metodi anche alla seconda microstriscia. Siamo partiti sempre dalla misurazione tramite la tecnica a "$\lambda/4$", e abbiamo ottenuto il seguente grafico:
 \begin{figure} [H]
 \centering
-\includegraphics[width=0.6\textwidth]{./Images/Relazione1_Foto/7_1_microstrip_stretta_lambda_quarti.png}
+\includegraphics[width=0.4\textwidth]{./Images/Relazione1_Foto/7_1_microstrip_stretta_lambda_quarti.png}
 \caption{Smith chart dell'impedenza tramite tecnica "$\lambda/4$".}
 \end{figure}
 Il valore misurato è:
@@ -294,8 +307,31 @@ E quindi ricaviamo:
 Z_C=\sqrt{Z_{in}\cdot Z_0}=\sqrt{95.36\cdot50}\simeq 69.05 \quad \Omega
 \end{equation}
 
+Anche in questo caso passiamo a valutare l'impedenza caratteristica tramite la tecnica di misura "corto circuito-
+circuito aperto". Abbiamo ottenuto i seguenti valori, presi a 81.2MHz, frequenza dello span per cui in misura in circuito aperto abbiamo trovato la parte reale minima,  con span tra 2MHz e 200MHz:
+\begin{equation}
+Z_{OL}=1.79-j46.37 \quad \Omega
+\end{equation}
+\begin{figure} [H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{./Images/Relazione1_Foto/7_1_microstrip_stretta_open.png}
+\caption{Smith chart con chiusura in circuito aperto misurata tra 2MHz e 200MHz.}
+\end{figure}
 
+\begin{equation}
+Z_{SC}=6.76+j 103.56 \quad \Omega
+\end{equation}
+\begin{figure} [H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{./Images/Relazione1_Foto/7_1_microstrip_stretta_short.png}
+\caption{Smith chart con chiusura in corto circuito misurata tra 2MHz e 200MHz.}
+\end{figure}
+Quindi l'impedenza caratteristica misurata con questo metodo è (trascurando anche qui le parti reali, nettamente inferiori rispetto alle parti immaginarie,e dovute a non idealità):
+\begin{equation}
+  Z_{C}=\sqrt{Z_{SC}\cdot Z_{OC}}\simeq 69.11 \quad \Omega
+\end{equation}
+Anche in questo caso si può notare che le due impedenze sono molto vicine tra loro.
 
-
+\section{Misura della permettività}
 
 \end{document}
