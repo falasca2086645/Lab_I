@@ -216,18 +216,18 @@ In conclusione: il modello della practice segue bene l'andamento della misura ($
 
 %------Cap 4-----
 \chapter{Misura della fase di $S_{21}$ tramite delay elettrico}
-
+AAA
 
 
 
 %-----Cap 5 ------
 \chapter{Misura della fase di $S_{21}$ tramite "phase slope"}
-
+AAA
 
 
 %-----Cap 6------
 \chapter{Misura di riflessione del cavo}
-
+AAA
 
 
 %----Cap 7------
@@ -333,5 +333,144 @@ Quindi l'impedenza caratteristica misurata con questo metodo è (trascurando anc
 Anche in questo caso si può notare che le due impedenze sono molto vicine tra loro.
 
 \section{Misura della permettività}
+Date le due microstrice precedenti, vogliamo misurare la loro permettività. Per farlo esistono vari
+metodi; tra questi noi abbiamo scelto di usare la misura del parametro di trasmissione $S_{21}$.
+Come nel capitolo 4 abbiamo misurato la fase di $S_{21}$ in formato unwrapped, e abbiamo aggiunto dallo
+strumento un electrical delay che portasse la fase circa a 0 (non esattamente ovviamnte, per via della presenza di una dipendenza non lineare della 
+frequenza con la fase e poichè il metood per basse frequenze perde validità).
+\subsection{Microstriscia stretta}
+Nel primo caso abbiamo annullato la fase con un electrical delay di 1.81 ns.
+\begin{figure} [H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{./Images/Relazione1_Foto/7_2_fase_microstrip_stretta.png}
+  \caption{Grafico della fase di $S_{21}$ con electrical delay di 1.81 ns.}
+\end{figure}
+A partire dall'electrical delay, $\tau$, abbiao poi:
+\begin{equation}
+  L_0=c \tau=3\cdot 10^8\cdot1.81\cdot 10^{-9}=0.543
+\end{equation}
+Dalla $L_0$, lunghezza nel vuoto, ricaviamo la permettività dalla lunghezza effettiva, pari a 29.5 cm.
+\begin{align}
+  n &=\sqrt{\epsilon_r}=\frac{L_0}{L}=1.8407 \\
+  \epsilon_r &= n^2=3.3881
+\end{align}
+
+\subsection{Microstriscia larga}
+In questo caso annullato la fase con un electrical delay di 1.991 ns.
+\begin{figure} [H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{./Images/Relazione1_Foto/7_2_fase_microstrip_larga.png}
+  \caption{Grafico della fase di $S_{21}$ con electrical delay di 1.991 ns.}
+\end{figure}
+A partire dall'electrical delay, $\tau$, abbiao poi:
+\begin{equation}
+  L_0=c \tau=3\cdot 10^8\cdot1.991\cdot 10^{-9}= 0.5973
+\end{equation}
+Dalla $L_0$, lunghezza nel vuoto, ricaviamo la permettività dalla lunghezza effettiva, pari a 29.5 cm.
+\begin{align}
+  n &=\sqrt{\epsilon_r}=\frac{L_0}{L}=    2.0247 \\
+  \epsilon_r &= n^2=    4.0996
+\end{align}
+
+\chapter{Costante di propagazione di una guida d'onda per il modo TE10}
+\section{Valutazione della costante di propagazione}
+Tramite lo strumento abbiamo misurato la fase di $S_{21}$ per valutare il comportamento in frequenza
+della costante di propagazione in funzione della frequenza. 
+
+\begin{figure} [H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{./Images/Relazione1_Foto/8_1_fase_S21_modo_guida.png}
+  \caption{Andamento in frequenza della fase di $S_{21}$ tra 0 e 6 GHz.}
+\end{figure}
+
+
+\begin{figure} [H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{./Images/Relazione1_Foto/8_2_fase_beta_zeta_misurato.png}
+  \caption{Andamento in frequenza della costante di propagazione tra 0 e 6 GHz.}
+\end{figure}
+
+Dalla teoria, per una guida d'onda rettangolare, sappiamo che il primo modo, il TE10, ha prima frequenza di cutoff pari:
+\begin{equation}
+  f_{c,10}=\frac{c}{2a}=\frac{3\cdot 10^8}{0.04755}=   3.1546 \cdot 10^9
+\end{equation}
+Dove a è il lato più lungo della guida.
+La costante di propagazione $\beta_z$ è:
+\begin{equation}
+  \beta_z = \sqrt{\left(\frac{2\pi f}{c}\right)^2 - \left(\frac{\pi}{a}\right)^2}
+\end{equation}
+Di seguito il grafico con $\beta_z$ teorico e misurato confrontati.
+\begin{figure} [H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{./Images/Relazione1_Foto/8_2_grafico_beta_mixed.png}
+  \caption{Grafico della costante di propagazione misurato e teorico tra 0 e 6GHz.}
+\end{figure}
+
+\section{Misurazione della $S_{11}$ con carico adattato}
+Siamo passati a valutare il coefficiente di riflessione mettendo il carico adattato ad un estremo della guida.
+\\Il carico è progettato per funzionare a 5.712 GHz. Il grafico della $S_{11}$ è il seguente:
+\begin{figure} [H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{./Images/Relazione1_Foto/8_b_S11_adattato_per_guida_rect.png}
+  \caption{Grafico del coefficiente di riflessione della guida con carico adattato.}
+\end{figure}
+Per l'SWR, che possiamo ricavare dalla seguente relazione (con $S_{11}$ in lineare) e il seguente grafico:
+\begin{equation}
+  \mathrm{SWR} = \frac{1 + |\Gamma|}{1 - |\Gamma|}= \frac{1 + |S_{11}|}{1 - |S_{11}|}
+\end{equation}
+\begin{figure}
+  \centering
+  \includegraphics[width=0.6\textwidth]{./Images/Relazione1_Foto/8_c_swr.png}
+  \caption{Grafico di SWR in funzione della frequenza.}
+\end{figure}
+Come si può notare, nella banda del modo TE10, il coefficente di riflessione assume valori molto piccoli, come ci aspettavamo,
+e di consegeunza il valore di SWR tendente ad 1, come risulta effettivamente dalla misurazione.
+
+\chapter{Linea di ritardo (delay line)}
+\section{Misurazione della banda della linea}
+Per prima cosa abbiamo valutato la banda della linea di ritardo vedendo quando il segnale scende di 3dB, e come si vede
+dal grafico accade a circa 55MHz.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{./Images/Relazione1_Foto/9_1_risposta_linea.png}
+  \caption{Andamento in frequenza della delay line, con banda a -3dB.}
+\end{figure}
+\section{Misurazione del ritardo della linea}
+
+Una volta valutata la banda passiamo a valutare il ritardo a partire dalla misura di fase con linear fit.
+Ricordiamo che la linea di ritardo ha la vite completamente svitata, quindi ci troviamo nel caso di ritardo massimo.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{./Images/Relazione1_Foto/9_2_delay_con_fit.png}
+  \caption{Misura della fase di $S_{21}$ con linear fit.}
+\end{figure}
+Dal linear fit abbiamo una pendenza $ -4.5419 \cdot 10^{-7}$°/Hz e una $\sigma_p = 5.005631105905910 \cdot 10^{-10}$°/Hz.
+\\Dalla pendenza troviamo il ritardo elettrico come nei capitoli precedenti:
+\begin{equation}
+  \tau_m= \frac{-p(deg)}{360}= 1.2616 \cdot 10^{-9}
+\end{equation}
+\begin{equation}
+  \tau= 1.26 \pm 0.50 ns 
+\end{equation}
+Un altro metodo per valutare il ritardo della linea è tramite l'aggiunta di un ritardo elettrico che annulli la fase.
+\\Nel nostro caso questo accade per un ritardo $\tau=1.22ns$, un valore prossimo a quello valutato con il metodo precedente.
+
+\begin{figure} [H]
+  \centering
+    \includegraphics[width=0.6\textwidth]{./Images/Relazione1_Foto/9_3_delay.png}
+        \caption{Grafico della fase di $S_{21}$ con electrical delay per ritardo massimo.}
+
+\end{figure}
+
+\section{Misura della lina di ritardo }
+In questo caso prendiamo la misura del ritardo della linea con lo stesso metodo del paragrafo precedente ma con la vite completamente avvitata,
+quindi con il ritardo minimo. In questo caso il l'electrical delay è di 1.12 ns.
+
+\begin{figure} [H]
+  \centering
+    \includegraphics[width=0.6\textwidth]{./Images/Relazione1_Foto/9_3_delay2.png}
+    \caption{Grafico della fase di $S_{21}$ con electrical delay per ritardo minimo.}
+\end{figure}
+
 
 \end{document}
