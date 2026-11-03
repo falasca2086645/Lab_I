@@ -62,7 +62,9 @@ Per eseguire una misura maggiormente precisa andiamo a diminuire la Resolution B
     \label{fig:1_2}
 \end{figure}
 Il valore misurato della frequenza con incertezza è:
-\[ f = [1.2500000 \pm 0.0000013 GHz]\]
+\begin{equation}
+f = [1.2500000 \pm 0.0000013 GHz]
+\end{equation}
 
 Sulla misura di potenza, il costruttore suggerisce un massimo di incertezza di 0.5 dB se:
 \begin{itemize}
@@ -72,12 +74,18 @@ Sulla misura di potenza, il costruttore suggerisce un massimo di incertezza di 0
 \end{itemize}
  Tutte queste condizioni sono soddisfatte in particolar modo l'\(SNR = -21 dBm-(-85dBm) = 64 dB\).
  
-\[P_s = [-21.1 dBm \pm 0.5\ dB]\]
+\begin{equation}
+P_s = [-21.1 dBm \pm 0.5\ dB]
+\end{equation}
 Per esprimere la misura in mW: \(P_s(mW) = 10^\frac{P_s,dBM}{10} = 7.82 \mu W\).
 \\
 Per convertire l'incertezza ne vado a valutare il valore percentuale:
-\[\Delta P_s = 100(10^\frac{0.5}{10}-1) = 12.2\%\]
-\[P_s = [0.00782 \pm 0.00096\ mW]\]
+\begin{equation}
+\Delta P_s = 100(10^\frac{0.5}{10}-1) = 12.2\%
+\end{equation}
+\begin{equation}
+P_s = [0.00782 \pm 0.00096\ mW]
+\end{equation}
 
 
 Un ultimo aspetto importante da analizzare è il contributo misurato a frequenze basse (tra 0 e qualche centinaio di KHz), non previsto dalla teoria. Questo fenomeno è legato al LO feedthrough, detto anche zero-frequency response, dovuto
@@ -107,12 +115,18 @@ e visualizzato come una risposta spuria a basse frequenze.
 Dopo aver configurato lo SPA con ingresso un carico da 50 \(\Omega\) vogliamo misurare la potenza di rumore dello strumento riportata in ingresso (Displayed Average Noise Level) a 1.5 GHz.
 
 Sullo SPA sono state adoperate le seguenti impostazioni: Center Frequency = 1.5 GHz; SPAN = 1 MHz; RBW = 10 kHz; RBW/VBW = 10; Attenuation = 0 dB. Utilizzando le funzioni “Detector Sample” e “Trace Average” fornite dallo SPA, è stato valutato il DANL(figura \ref{fig:DANL}), il quale è strettamente dipende dalla banda ovvero dal RBW:
-\[DANL@10kHz = [-102.119 dBm]\]
+\begin{equation}
+DANL@10kHz = [-102.119 dBm]
+\end{equation}
 
 Dalla teoria sappiamo che ogni fattore 10 di RBW sposta il DANL di 10 dB, come si osserva nella seguente formula:
-\[DANL@1Hz = DANL@RBW -10log\frac{RBW}{1Hz} \]
+\begin{equation}
+DANL@1Hz = DANL@RBW -10log\frac{RBW}{1Hz}
+\end{equation}
 Di conseguenza:
-\[DANL@1Hz =DANL@10kHz - 10log\frac{10kHz}{1Hz} =-142.119 dBm.\]
+\begin{equation}
+DANL@1Hz =DANL@10kHz - 10log\frac{10kHz}{1Hz} =-142.119 dBm.
+\end{equation}
 \begin{figure} [H]
     \centering
     \includegraphics[width=1\textwidth]{./Images/Relazione2_Foto/2_1Misura_Potenza_Rumore_1_5Ghz_SPAN1Mhz_RBW10kHz_VBW1kHz_Att0_FIGURE.png} 
@@ -474,7 +488,9 @@ Con $k = 2$ l'incertezza estesa di ogni componente è 31.9\,\%, cioè $+2.5/-3.4
 u_r(|E|) = u_r\,\frac{\sqrt{E_1^4 + E_2^4 + E_3^4}}{|E|^2} = 15.9\,\% \times 0.624 = 9.9\,\%,
 \end{equation}
 e con $k = 2$ otteniamo:
-\[ |E| = [0.244 \pm 0.049\ \mathrm{V/m}] \qquad\qquad |H| = [0.65 \pm 0.13\ \mathrm{mA/m}] \]
+\begin{equation}
+|E| = [0.244 \pm 0.049\ \mathrm{V/m}] \qquad\qquad |H| = [0.65 \pm 0.13\ \mathrm{mA/m}]
+\end{equation}
 Le tre componenti sono diverse: il 49\,\% della potenza cade sulla posizione a $240^\circ$ e solo il 16\,\% su quella a $120^\circ$ (4.9\,dB di differenza fra le due letture), quindi il campo ha una direzione prevalente, come per un'onda che arriva da un solo trasmettitore. Il contributo maggiore all'incertezza è il fattore d'antenna; la lettura dello SPA non entra nel bilancio, anche perché la practice dà l'errore di $\pm 0.5$\,dB solo per RBW minori di 100\,kHz.
 
 % =====================================================================
