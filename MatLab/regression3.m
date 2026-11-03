@@ -25,4 +25,3 @@ unc_p=sigma_y/(sqrt(N)*sigma_x);
 unc_q=sigma_y/(sqrt(N)*sigma_x)*sqrt(sigma_x^2+mean_x^2);
 rfactor=(N*sum(x.*y)-sum(x)*sum(y))/...
     sqrt((N*sum(x.^2)-(sum(x))^2).*(N*sum(y.^2)-(sum(y))^2));
-Visualizzazione di regression3.m.

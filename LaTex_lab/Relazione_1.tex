@@ -44,16 +44,11 @@ Quello che si misura in più rispetto alla risposta ideale è l'errore residuo d
 Quindi il carico ($S_{11} = 0$) misura la direttività residua, il corto ($S_{11} = -1$) soprattutto il tracking in riflessione e l'adattamento di sorgente residui, il thru ($S_{21} = 1$, porte adattate) il tracking residuo in trasmissione. Le tre verifiche ci dicono quindi anche quale incertezza attribuire alle misure successive.
 
 \section{Strumento e calibrazione}
-L'analizzatore è un Keysight P9372A con interfaccia USB, comandato dal PC del banco. Le tracce sono state acquisite con 
+L'analizzatore è un Keysight P9372A con interfaccia USB, comandato dal PC del banco. 
+Le tracce sono state acquisite con
 la routine del corso \texttt{DataAquisition11.m}, che salva la struttura \texttt{dataStruct}
 con le frequenze, il parametro $S$ complesso e il dato nel formato dello schermo. 
-La calibrazione Full 2-Port da 300\,kHz a 1.5\,GHz era già attiva all'inizio del turno: 
-lo si vedeva dalla banda indicata sullo schermo, e il file salvato dallo strumento 
-(\texttt{300K\_1500M\_2PORT\_10\_22\_26.csa}) riporta che è stata eseguita alle 13:01 del
-22 ottobre con il calibratore elettronico (ECal) N4691-60006. Dallo stesso file si leggono
-le impostazioni, comuni a tutte le misure dei punti 1--3: 1601 punti (passo 0.9373\,MHz),
-banda IF 2\,kHz, potenza $-5$\,dBm su entrambe le porte. Il termine di isolamento nel
-file è nullo ($-313$\,dB): la calibrazione è stata fatta senza la misura di isolamento.
+La prima calibrazione Full 2-Port va da 300\,kHz a 1.5\,GHz (300K\_1500M\_2PORT\_10 \_22\_26.csa).
 
 \section{Carico adattato}
 \begin{figure}[H]
@@ -62,30 +57,38 @@ file è nullo ($-313$\,dB): la calibrazione è stata fatta senza la misura di is
     \caption{Carico adattato da 50\,$\Omega$ sulla porta 1: modulo di $S_{11}$ in dB.}
     \label{fig:p1carico}
 \end{figure}
-Da 10\,MHz in su $|S_{11}|\le-42.3$\,dB (il massimo è a 966\,MHz, la mediana è $-44.4$\,dB), cioè un coefficiente di riflessione residuo $|\Gamma|\le0.0077$ (fig.~\ref{fig:p1carico}). Questo valore comprende sia la riflessione del carico stesso sia l'errore residuo dello strumento: la calibrazione funziona. Fa eccezione l'estremo basso della banda: il primo punto (300\,kHz) vale $-16.3$\,dB e la traccia scende sotto $-40$\,dB solo da 5.9\,MHz in su. Nel file di calibrazione la direttività \emph{non corretta} dello strumento a 300\,kHz è solo $-7.7$\,dB, contro valori fra $-31$ e $-44$\,dB nel resto della banda: lì la correzione è molto sensibile a qualunque piccola variazione avvenuta dopo la calibrazione (cavi mossi, ripetibilità dei connettori). I primissimi punti della banda vanno quindi presi con cautela anche nelle misure successive.
+Da 10\,MHz in su $|S_{11}|\le-42.3$\,dB (il massimo è a 966\,MHz), cioè un coefficiente di riflessione
+residuo $|\Gamma|\le0.0077$ (fig.~\ref{fig:p1carico}).
+Fa eccezione l'estremo basso della banda: da 300\,kHz, dove vale $-16.3$\,dB e 
+la traccia scende sotto $-40$\,dB solo da 5.9\,MHz in su.
+\\I primissimi punti della banda vanno quindi presi con cautela anche nelle misure successive.
 
-\section{Corto}
+\section{Chiusura in corto circuito}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{Images/Relazione1_Foto/p1_corto.pdf}
     \caption{Corto circuito sulla porta 1: $S_{11}$ sulla carta di Smith, dal marker verde (1.2\,MHz) a quello rosso (1.5\,GHz).}
     \label{fig:p1corto}
 \end{figure}
-La traccia sta sul bordo della carta di Smith (fig.~\ref{fig:p1corto}): da 10\,MHz in su $|S_{11}|$ è compreso fra $-0.17$ e $+0.02$\,dB, come deve essere per un carico puramente reattivo. La fase non resta a $180^\circ$ ma ruota in senso orario, linearmente con la frequenza, fino a $52.6^\circ$ a 1.5\,GHz: la regressione lineare della fase dà una pendenza di $-8.437\cdot10^{-8}$\,gradi/Hz e un'intercetta di $179.1^\circ$, quasi $180^\circ$ a frequenza nulla. Come per il carico, fanno eccezione i primissimi punti: a 300\,kHz la fase vale $147^\circ$ e $|S_{11}| = +0.20$\,dB, valore impossibile per un corto passivo, e a 1.2\,MHz (marker verde) la fase vale $171.5^\circ$ invece di $179^\circ$; da 10\,MHz in su i punti stanno sulla retta entro $1^\circ$. È il comportamento di un corto posto dietro un breve tratto di linea,
-\begin{equation}
-S_{11} = -\mathrm{e}^{-\mathrm{j}\omega\,2\tau_c}, \qquad \tau_c = \frac{8.437\cdot10^{-8}\ \mathrm{gradi/Hz}}{2\cdot360^\circ} = 117\ \mathrm{ps}\quad(3.5\ \mathrm{cm\ in\ aria}),
-\end{equation}
-quindi il corto usato non si trova esattamente sul piano di riferimento della calibrazione. La piccola perdita che compare verso 1.5\,GHz (fino a $-0.17$\,dB) comprende quella di questo tratto, percorso in andata e ritorno, e l'errore residuo dello strumento in riflessione.
+La traccia si trova sul bordo della carta di Smith (fig.~\ref{fig:p1corto}): da 10\,MHz in su $|S_{11}|$ è compreso fra $-0.17$ e $+0.02$\,dB, cioè circa 0\,dB, come atteso per una chiusura in corto. La calibrazione risulta quindi adeguata.
 
-\section{Thru}
+\section{Misura di $S_{21}$ del thru}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{Images/Relazione1_Foto/p1_thru.pdf}
     \caption{Porta 1 collegata alla porta 2 con un raccordo (thru): modulo di $S_{21}$ in dB.}
     \label{fig:p1thru}
 \end{figure}
-Con le due porte collegate da un raccordo, da 1\,MHz in su $|S_{21}|$ resta fra $-0.045$ e $+0.023$\,dB (media $-0.020$\,dB, deviazione standard 0.017\,dB); solo il primo punto (300\,kHz) vale $-0.185$\,dB (fig.~\ref{fig:p1thru}). La fase di $S_{21}$ scende linearmente con la frequenza, con pendenza di $-3.064\cdot10^{-8}$\,gradi/Hz: corrisponde a un ritardo di 85\,ps (2.5\,cm in aria), quello del raccordo. Lo scostamento da 0\,dB cresce lentamente con la frequenza e comprende anche la piccola perdita del raccordo: come stima dell'errore residuo dello strumento in trasmissione è quindi per eccesso.
+Con le due porte collegate da un raccordo, da 1\,MHz in su $|S_{21}|$ resta fra $-0.045$ e
+ $+0.023$\,dB. 
+\\Come ci aspettavamo il valore di $S_{21}$ in dB è circa 0, quindi 1 in lineare, ciò vuol dire che la calibrazione
+è ben fatta, poichè lo strumento non deve influenzare le misure in trasmissione.
+\\Lo scostamento da 0\,dB cresce lentamente con la frequenza e comprende anche la 
+ piccola perdita del raccordo: come stima dell'errore residuo dello strumento in trasmissione è 
+ quindi per eccesso.
 
+
+\begin{comment}
 \section{Errori residui e incertezze per i punti successivi}
 \begin{table}[H]
 \centering
@@ -100,15 +103,17 @@ thru & $|S_{21}| = 0$\,dB & da $-0.045$ a $+0.023$\,dB & $\pm0.045$\,dB \\ \hlin
 \end{tabular}
 \end{table}
 Le tre verifiche danno il risultato atteso in tutta la banda, con l'avvertenza sui primi punti sotto qualche MHz (tab.~\ref{tab:p1}). Non avendo altre informazioni sull'accuratezza dello strumento, usiamo questi errori residui come limiti di distribuzioni rettangolari: per i moduli misurati in trasmissione $u = 0.045/\sqrt3 = 0.026$\,dB (punto~2); per i coefficienti di riflessione $u = 0.0077/\sqrt3 = 0.0044$ sulla parte reale e su quella immaginaria. Tutte le incertezze di questi tre punti sono incertezze tipo ($k = 1$); nei risultati dei punti 2 e 3 sono arrotondate per eccesso a due cifre significative.
+\end{comment}
+
 
 % =====================================================================
 % Capitolo 2
 % =====================================================================
 \chapter{Attenuazione del cavo coassiale con il marker}
-Sul banco c'è un cavo coassiale di lunghezza fisica $L = 10$\,m (dato della practice). Lo si collega fra le due porte del VNA, si misura $S_{21}(f)$ in formato Log Mag su carta rettangolare e si legge con un marker l'attenuazione del cavo a $f = 750$\,MHz.
+In questa misurazione valutiamo l'attenuazione di un cavo coassiale di lunghezza fisica $L = 10$\,m . collegato fra le due porte del VNA, misurando $S_{21}(f)$ in formato Log Mag su carta rettangolare e leggendo con un marker l'attenuazione del cavo a $f = 750$\,MHz.
 
 \section{Attenuazione attesa}
-Il cavo è da 50\,$\Omega$ ed è chiuso su porte da 50\,$\Omega$: non ci sono riflessioni apprezzabili e $S_{21}$ è il solo termine di propagazione,
+Il cavo è da 50\,$\Omega$ ed è chiuso su porte da 50\,$\Omega$: non ci sono riflessioni e $S_{21}$ è il solo termine di propagazione,
 \begin{equation}
 S_{21}(\omega) = \mathrm{e}^{-\gamma L} = \mathrm{e}^{-\alpha L}\,\mathrm{e}^{-\mathrm{j}\beta L},
 \qquad A = -|S_{21}|_{dB} = 8.686\,\alpha L ,
@@ -116,8 +121,7 @@ S_{21}(\omega) = \mathrm{e}^{-\gamma L} = \mathrm{e}^{-\alpha L}\,\mathrm{e}^{-\
 dove $8.686 = 20\log_{10}\mathrm{e}$ converte i neper in decibel. Nei cavi dominano le perdite nei conduttori, che per effetto pelle crescono con la radice della frequenza: $\alpha = \alpha'\sqrt\omega$. Ci aspettiamo quindi:
 \begin{itemize}
   \item una curva che parte da 0\,dB a frequenza nulla con tangente verticale (la derivata di $\sqrt f$ diverge nell'origine) e poi scende sempre più lentamente;
-  \item nessuna ondulazione apprezzabile, perché il cavo è adattato alle porte;
-  \item come ordine di grandezza, l'esempio visto a lezione di un tipico cavo RG58, $\alpha\simeq0.04$\,m$^{-1}$ a 1\,GHz (circa 0.35\,dB/m): scalando come $\sqrt f$, 10\,m a 750\,MHz darebbero circa 3\,dB. Il nostro cavo non è necessariamente un RG58: il numero serve solo a sapere che cosa aspettarsi.
+  \item nessuna ondulazione apprezzabile, perché il cavo è adattato alle porte.
 \end{itemize}
 
 \section{Misura dell'attenuazione a 750\,MHz}
@@ -127,10 +131,13 @@ dove $8.686 = 20\log_{10}\mathrm{e}$ converte i neper in decibel. Nei cavi domin
     \caption{Cavo coassiale da 10\,m fra le due porte: modulo di $S_{21}$ in dB, con il marker a 750\,MHz.}
     \label{fig:p2}
 \end{figure}
-La traccia (fig.~\ref{fig:p2}) ha l'andamento atteso: scende rapidamente alle frequenze più basse e poi sempre più lentamente, fino a $-4.58$\,dB a 1.5\,GHz, senza ondulazioni visibili (le irregolarità da un punto all'altro sono di qualche millesimo di dB). Fa eccezione il primo punto, a 300\,kHz: vale $-0.26$\,dB, mentre scalando come $\sqrt f$ il valore a 750\,MHz ci si aspetta circa $-0.06$\,dB. È la frequenza in cui, nel punto~1, la correzione è meno accurata (thru a $-0.185$\,dB, carico a $-16.3$\,dB); già al secondo punto, a 1.2\,MHz, la traccia vale $-0.15$\,dB contro i $-0.13$\,dB attesi. Il passo della scansione è 0.9373\,MHz; il marker a 750\,MHz, che interpola fra i punti a 749.21 e 750.15\,MHz, dà
+La traccia (fig.~\ref{fig:p2}) ha l'andamento atteso: scende circa come $1/\sqrt{f}$ 
+senza ondulazioni visibili. Dalla misurazione otteniamo:
 \begin{equation}
 |S_{21}|(750\ \mathrm{MHz}) = -3.1527\ \mathrm{dB}.
 \end{equation}
+
+\begin{comment}
 
 \section{Incertezza}
 Consideriamo tre contributi:
@@ -144,81 +151,84 @@ Domina il primo contributo, e $u = \sqrt{0.026^2+0.001^2} = 0.026$\,dB:
 \boxed{A(750\ \mathrm{MHz}) = (3.153 \pm 0.026)\ \mathrm{dB}}
 \end{equation}
 pari a 0.315\,dB/m, dello stesso ordine di grandezza atteso (circa 3\,dB).
-
+\end{comment}
 % =====================================================================
 % Capitolo 3
 % =====================================================================
 \chapter{Modulo di \texorpdfstring{$S_{21}$}{S21} in funzione di \texorpdfstring{$\sqrt f$}{sqrt(f)}}
-La practice dà il modello teorico del cavo,
+Il modello teorico del cavo è:
 \begin{equation}
 S_{21}(\omega) = \mathrm{e}^{-\gamma L} = \mathrm{e}^{-\alpha L-\mathrm{j}\beta L} = \mathrm{e}^{-\alpha'\sqrt\omega\,L-\mathrm{j}\omega\tau},
 \qquad |S_{21}|_{dB} = -8.686\,\alpha'\sqrt{2\pi}\,L\,\sqrt f ,
 \label{eq:modello}
 \end{equation}
-e chiede, sulla traccia del punto~2, di:
-\begin{enumerate}
-  \item eseguire la regressione lineare (routine \texttt{LinearFit}) con $\sqrt f$ in ascissa;
-  \item graficare i dati misurati insieme al modello;
-  \item ricavare dalla pendenza la costante $\alpha'$ con la sua incertezza;
-  \item usare $\alpha'$ per calcolare l'attenuazione a 750\,MHz con la sua incertezza;
-  \item confrontarla con il valore del punto~2.
-\end{enumerate}
+Passiamo quindi ad eseguire la regressione lineare (routine \texttt{LinearFit}) con $\sqrt f$ in ascissa, graficare i dati misurati insieme al modello,
+   ricavare dalla pendenza la costante $\alpha'$ con la sua incertezzae infine 
+   usare $\alpha'$ per calcolare l'attenuazione a 750\,MHz con la sua incertezza e 
+   confrontarla con il valore del punto~2.
+
 
 \section{Linearizzazione del modello e risultati attesi}
 In funzione di $x = \sqrt f$ la \eqref{eq:modello} è una retta per l'origine, $y = p\,x$, con pendenza $p = -8.686\,\alpha'\sqrt{2\pi}\,L$: graficare in funzione di $\sqrt f$ linearizza la curva del punto~2. Dalla pendenza
 \begin{equation}
 \alpha' = \frac{-p}{8.686\sqrt{2\pi}\,L}, \qquad A(f) = 8.686\,\alpha'\sqrt{2\pi f}\,L = -p\sqrt f .
 \end{equation}
-La lunghezza $L = 10$\,m è un dato della practice e la trattiamo come esatta: le incertezze di $\alpha'$ e di $A$ vengono solo da quella della pendenza. La routine \texttt{LinearFit} stima l'incertezza dei punti dai residui, con $N-2$ gradi di libertà,
+La lunghezza ricoridamo essere $L = 10$\,m . Le incertezze di $\alpha'$ e di $A$ vengono solo da quella della pendenza. La routine \texttt{LinearFit} stima l'incertezza oltre alla pendenza:
+
+\begin{comment}
+  
 \begin{equation}
 u^2(y) = \frac{1}{N-2}\sum_{j=1}^{N}\big[y_j-(p\,x_j+q)\big]^2 , \qquad u(p) = u(y)\sqrt{\frac{N}{\Delta}}, \qquad u(q) = u(y)\sqrt{\frac{\sum x_j^2}{\Delta}},
 \end{equation}
 con $\Delta = N\sum x_j^2-\big(\sum x_j\big)^2$.
+\end{comment}
 
-Se il modello descrive completamente il cavo ci aspettiamo un'intercetta $q$ compatibile con zero, residui senza una forma (solo rumore) e un'attenuazione a 750\,MHz compatibile con quella del marker. Il modello tiene però solo le perdite nei conduttori: per una linea a basse perdite $\gamma\simeq\frac12\big(R'/Z_0+G'Z_0\big)+\mathrm{j}\omega\sqrt{L'C'}$, e il termine del dielettrico $G'Z_0/2$, con $G' = \omega C'\tan\delta$ proporzionale alla frequenza, è trascurato perché nei cavi è più piccolo di quello dei conduttori. Se non è del tutto trascurabile lo vedremo nei residui. Come ordine di grandezza, l'esempio dell'RG58 visto a lezione corrisponde ad $\alpha' = 0.04/\sqrt{2\pi\cdot10^9}\simeq5\cdot10^{-7}$\,m$^{-1}$(rad/s)$^{-1/2}$.
+Ci aspettiamo quindi un'intercetta un'attenuazione a 750\,MHz compatibile con quella del marker. 
+
 
 \section{Regressione lineare}
-Al banco abbiamo usato la routine \texttt{LinearFit} con $\sqrt f$ in ascissa, portando il numero di punti del fit da 100 (valore di default della routine) a 1600. In MATLAB abbiamo rifatto la regressione con le stesse formule su tutti i 1601 punti della traccia del punto~2 (tab.~\ref{tab:p3}, fig.~\ref{fig:p3}); il fit del banco dà gli stessi valori entro un decimo dell'incertezza.
-\begin{table}[H]
-\centering
-\caption{Regressione lineare $|S_{21}|_{dB} = p\sqrt f + q$. Per il fit del banco $u(y)$ è ricavato da $u(p)$, salvato nel workspace della routine.}
-\label{tab:p3}
-\begin{tabular}{l|c|c}
-\hline
- & MATLAB (1601 punti) & banco (1600 punti) \\ \hline
-$p$ [$10^{-4}$\,dB$/\sqrt{\mathrm{Hz}}$] & $-1.18847\pm0.00086$ & $-1.18841\pm0.00086$ \\
-$q$ [dB] & $0.0768\pm0.0024$ & $0.0767\pm0.0024$ \\
-$u(y)$ [dB] & 0.0313 & 0.0313 \\
-$r$ & $-0.99958$ & $-0.99958$ \\ \hline
-\end{tabular}
-\end{table}
+Abbiamo usato la routine \texttt{LinearFit} con $\sqrt f$ in ascissa, portando il numero di punti del fit a 1600. 
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/Relazione1_Foto/p3_fit_sqrtf.pdf}
-    \caption{In alto: $|S_{21}|$ in funzione di $\sqrt f$ (punti blu) con la retta di regressione (rosso), il modello $a\sqrt f + bf$ (nero) e il marker del punto~2. In basso: residui della retta e dei due modelli con il termine del dielettrico.}
+    \includegraphics[width=0.8\textwidth]{Images/Relazione1_Foto/3_1_confronto_misura_fit.pdf}
+    \caption{$|S_{21}|$ del cavo in funzione della frequenza: misura (rosso) e fit $p\sqrt f + q$ ottenuto con \texttt{LinearFit} (blu tratteggiato).}
     \label{fig:p3}
 \end{figure}
 
 \section{Costante \texorpdfstring{$\alpha'$}{alpha'} e attenuazione a \texorpdfstring{750\,MHz}{750 MHz}}
-Dalla pendenza, con $L = 10$\,m e $20\log_{10}\mathrm{e} = 8.6859$:
+Dalla pendenza $p = -1.18841\cdot10^{-4}$\,dB/$\sqrt{\mathrm{Hz}}$ e dalla sua incertezza $\sigma_p = 8.566\cdot10^{-8}$\,dB/$\sqrt{\mathrm{Hz}}$, con $L = 10$\,m e $20\log_{10}\mathrm{e} = 8.6859$, il valore medio di $\alpha'$ è
 \begin{equation}
-\alpha' = \frac{1.18847\cdot10^{-4}}{8.6859\cdot\sqrt{2\pi}\cdot10} = (5.4586\pm0.0040)\cdot10^{-7}\ \mathrm{m}^{-1}(\mathrm{rad/s})^{-1/2},
+\bar\alpha' = \frac{|p|}{8.6859\,\sqrt{2\pi}\,L} = \frac{1.18841\cdot10^{-4}}{8.6859\cdot\sqrt{2\pi}\cdot10} = 5.4584\cdot10^{-7}\ \mathrm{m}^{-1}(\mathrm{rad/s})^{-1/2},
+\end{equation}
+e, poiché $\alpha'$ è proporzionale a $p$, la sua incertezza è
+\begin{equation}
+\sigma_{\alpha'} = \frac{\sigma_p}{8.6859\,\sqrt{2\pi}\,L} = \frac{8.566\cdot10^{-8}}{8.6859\cdot\sqrt{2\pi}\cdot10} = 3.93\cdot10^{-10}\ \mathrm{m}^{-1}(\mathrm{rad/s})^{-1/2}.
+\end{equation}
+Il risultato è quindi
+\begin{equation}
+\alpha' = (5.4584\pm0.0040)\cdot10^{-7}\ \mathrm{m}^{-1}(\mathrm{rad/s})^{-1/2},
 \end{equation}
 con incertezza relativa dello 0.07\,\%; il valore è dello stesso ordine di grandezza di quello dell'esempio visto a lezione ($5\cdot10^{-7}$). L'attenuazione a 750\,MHz prevista con $\alpha'$:
 \begin{equation}
-A_{fit}(750\ \mathrm{MHz}) = -p\sqrt f = 1.18847\cdot10^{-4}\cdot27\,386 = (3.2547\pm0.0024)\ \mathrm{dB},
+A_{fit}(750\ \mathrm{MHz}) = -p\sqrt f = 1.18841\cdot10^{-4}\cdot27\,386 = (3.2546\pm0.0024)\ \mathrm{dB},
 \end{equation}
-con $u(A_{fit}) = \sqrt f\,u(p)$.
+con $\sigma_{A_{fit}} = \sqrt f\,\sigma_p$.
 
+Rispetto ai $3.1527$\,dB letti con il marker nel capitolo precedente, $A_{fit}$ è maggiore di $0.102$\,dB, cioè di circa il 3\,\%: lo scarto è circa 43 volte $\sigma_{A_{fit}}$, che tiene conto solo della dispersione dei punti attorno alla retta. Gran parte della differenza nasce dal fatto che $-p\sqrt f$ trascura l'intercetta del fit, $q = 0.077$\,dB: includendola, la retta dà $3.178$\,dB a 750\,MHz, a $0.025$\,dB dal marker.
+
+\begin{comment}
+  
 \section{Confronto con il marker}
 $A_{fit}$ supera il valore del marker, $(3.153\pm0.026)$\,dB, di 0.102\,dB, cioè di 3.9 volte l'incertezza combinata $\sqrt{0.0024^2+0.026^2} = 0.026$\,dB: \textbf{i due valori non sono compatibili}. La causa è il modello, non la misura:
 \begin{itemize}
-  \item i residui della retta (fig.~\ref{fig:p3}, in basso) non sono rumore ma un arco sistematico, da $-0.12$ a $+0.05$\,dB (escluso il primo punto, a 300\,kHz), molto più grande del rumore della traccia (0.001\,dB);
+  \item i residui della retta non sono rumore ma un arco sistematico, da $-0.12$ a $+0.05$\,dB (escluso il primo punto, a 300\,kHz), molto più grande del rumore della traccia (0.001\,dB);
   \item l'intercetta $q = 0.077$\,dB è diversa da zero di più di 30 volte la sua incertezza, mentre il modello prevede una retta per l'origine: un cavo passivo non può avere $|S_{21}|>0$\,dB, e il fit compensa con l'intercetta una curvatura che il modello non contiene.
 \end{itemize}
 La retta completa, con l'intercetta, dà invece a 750\,MHz un'attenuazione di 3.178\,dB, a 0.025\,dB dal marker, cioè entro la sua incertezza: le misure dei punti 2 e 3 sono coerenti, è il modello per l'origine con la sola $\alpha'$ a non bastare. Aggiungendo il termine del dielettrico, proporzionale a $f$, lo scarto quadratico medio dei residui scende da 0.0313 a 0.0155\,dB e l'attenuazione a 750\,MHz diventa 3.161\,dB; con anche un piccolo termine costante (connettori, residuo della calibrazione), $A = a\sqrt f + bf + c$, scende a 0.0076\,dB e $A(750\ \mathrm{MHz}) = 3.1525$\,dB, in accordo con il marker. A 750\,MHz questo modello ripartisce l'attenuazione in 2.81\,dB dovuti ai conduttori, 0.26\,dB al dielettrico e 0.08\,dB costanti.
 
 In conclusione: il modello della practice segue bene l'andamento della misura ($r = -0.99958$), ma, attribuendo tutta la perdita alla legge in $\sqrt f$, a 750\,MHz sovrastima l'attenuazione di 0.10\,dB, cioè di circa il 3\,\%. Il valore misurato dell'attenuazione è quello del marker, $(3.153\pm0.026)$\,dB; $\alpha' = (5.4586\pm0.0040)\cdot10^{-7}$\,m$^{-1}$(rad/s)$^{-1/2}$ è il parametro della legge in $\sqrt f$ che meglio approssima la misura su tutta la banda, e la sua incertezza (solo statistica) non comprende l'errore del modello.
+\end{comment}
 
 % =====================================================================
 % Capitolo 4
@@ -296,7 +306,7 @@ Utilizzando la routine MATLAB LinearFit.m (figura \ref{fig:5_2}) otteniamo il va
 \end{figure}
 
 \begin{equation}
-p_m = -1,5472\cdot 10^{-5} \quad °/Hz
+\bar p = -1,5472\cdot 10^{-5} \quad °/Hz
 \end{equation}
 \begin{equation}
 \sigma_p = 4,6777775720636 \cdot 10^{-9} \quad °/Hz
@@ -309,7 +319,7 @@ p_m = -1,5472\cdot 10^{-5} \quad °/Hz
 \section{Ritardo elettrico}
 Ora passiamo a calcolare il ritardo elettrico, ricordando che la pendenza è espressa in gradi:
 \begin{equation}
-  \tau_m=42,978\ ns
+  \bar\tau=42,978\ ns
 \end{equation}
 \begin{equation}
   \sigma_{\tau}=\frac{\sigma_{p}}{360}= 0,013\ ns
@@ -561,6 +571,9 @@ Di seguito il grafico con $\beta_z$ teorico e misurato confrontati.
   \includegraphics[width=0.6\textwidth]{./Images/Relazione1_Foto/8_2_grafico_beta_mixed.png}
   \caption{Grafico della costante di propagazione misurata e teorica tra 0 e 6GHz.}
 \end{figure}
+Confrontanto i due si nota che giustamente per basse frequenze il valore misurato dà valori molto piccoli, associabili ad esempio
+al rumore, mentre sopra la frequenza di cutoff entrambi i grafici salgono circa con lo stesso andamento. La differenza tra i due grafici è legata al ritardo introdotto dal tratto di linea, che aggiunge un contributo costante
+che se rimosso porta i due grafici quasi a sovrapporsi. Possiamo quindi concludere che la misurazione è molto vicina al valore teorico, e quindi risulta valida.
 
 \section{Misura di \texorpdfstring{$S_{11}$}{S11} con carico adattato}
 Siamo passati a valutare il coefficiente di riflessione mettendo il carico adattato ad un estremo della guida.
@@ -607,7 +620,7 @@ Dal linear fit abbiamo una pendenza $ -4.5419 \cdot 10^{-7}$°/Hz e una $\sigma_
 
 Dalla pendenza troviamo il ritardo elettrico come nei capitoli precedenti:
 \begin{equation}
-  \tau_m= \frac{-p(deg)}{360}= 1.2616 \cdot 10^{-9}\ \mathrm{s}
+  \bar\tau= \frac{-p(deg)}{360}= 1.2616 \cdot 10^{-9}\ \mathrm{s}
 \end{equation}
 \begin{equation}
   \tau= [1,2616 \pm 0,0014]\ ns 
