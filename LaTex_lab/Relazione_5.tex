@@ -56,7 +56,7 @@ Ci siamo centrati nel primo gruppo di modi risonanti ed in particolare abbiamo p
 \end{figure}
 Da lui ricaviamo:
 \begin{equation}
-    f_0=1.97639 \quad GHz
+    f_0=1.97637 \quad GHz
 \end{equation}
 \subsection{Misura del fattore di qualità unloaded, $Q_0$}
 Di seguito vediamo i vari passaggi per misurare il fattore di qualità unloaded, $Q_0$, e il coefficiente di accoppiamento $\beta$.
@@ -107,15 +107,16 @@ Come si può vedere l'SWR vale 3.02866. Quindi:
 
 
 \section{Stima di $Q_0$ dal linear fit della fase dell'impedenza}
-Abbiamo valutato $Q_0$ dal linear fit della fase. Essendo linear fit fatta per approssimare dei punti con una retta, abbiamo fatto il linear fit sono nella zona lineare della misura, e non per tutto 
+Abbiamo valutato $Q_0$ dal linear fit della fase dell'impedenza. Essendo linear fit fatta per approssimare dei punti con una retta, abbiamo fatto il linear fit sono nella zona lineare della misura, e non per tutto 
 lo span, in modo da avere una retta molto precisa nella zona lineare.      
 \\Dal linear fit risulta:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{./Images/Relazione5_Foto/2_2_fase_di_Z_con_linear_fit.png}
-    \caption{Grafico della fase con linear fit nella zona lineare.}
+    \caption{Grafico della fase dell'impedenza con linear fit nella zona lineare.}
 \end{figure}
-Dal linearFit troviamo: $\overline{p}=-3.886785834686489\cdot 10^{-4}\,\mathrm{^\circ/Hz}$ e $\sigma_p=3.673332224955134\cdot10^{-7}\,\mathrm{^\circ/Hz}$
+Dal linearFit troviamo: $\overline{p}=-4.015318806635485\cdot 10^{-4}\,\mathrm{^\circ/Hz}$ e $\sigma_p=1.557248247795225\cdot10^{-7}\,\mathrm{^\circ/Hz}$
+
 
 
 Con $\varphi$ in rad e $f$ in Hz, vicino alla risonanza:
@@ -146,24 +147,24 @@ Con \(f_0=1.976370\cdot10^9\,\mathrm{Hz}\):
 
 \[
 \overline{Q_0}=-\overline{p}\,\frac{\pi}{180}\,\frac{f_0}{2}
-=3.886785834686489\cdot10^{-4}\,\mathrm{^\circ/Hz}\cdot\frac{\pi}{180}\,\mathrm{rad/^\circ}\cdot\frac{1.976370\cdot10^{9}\,\mathrm{Hz}}{2}
-\simeq 6703.6
+=4.015318806635485\cdot10^{-4}\,\mathrm{^\circ/Hz}\cdot\frac{\pi}{180}\,\mathrm{rad/^\circ}\cdot\frac{1.976370\cdot10^{9}\,\mathrm{Hz}}{2}
+\simeq 6925.3
 \]
 
 \[
 \sigma_{Q_0}=\sigma_p\,\frac{\pi}{180}\,\frac{f_0}{2}
-=3.673332224955134\cdot10^{-7}\,\mathrm{^\circ/Hz}\cdot\frac{\pi}{180}\,\mathrm{rad/^\circ}\cdot\frac{1.976370\cdot10^{9}\,\mathrm{Hz}}{2}
-\simeq 6.3
+=1.557248247795225\cdot10^{-7}\,\mathrm{^\circ/Hz}\cdot\frac{\pi}{180}\,\mathrm{rad/^\circ}\cdot\frac{1.976370\cdot10^{9}\,\mathrm{Hz}}{2}
+\simeq 2.7
 \]
 
 \begin{equation}
-Q_0=\overline{Q_0}\pm\sigma_{Q_0}=6703.6\pm6.3
+Q_0=\overline{Q_0}\pm\sigma_{Q_0}=6925.3\pm2.7
 \end{equation}
 
-Il valore valutato con linearFit si discosta di circa 300 dal valore misuratro tramite l'impedenza.
-\\L'errore è probabilmente dovuto all'approssimazione del linearFit, poichè la valutazione della pendenza rimane valida in un intorno stretto di $f_0$, ma muovendoci troppo nell'introno della frequenza di risonanza avremmo pochi campioni, quindi
+Il valore valutato con linearFit si discosta di circa 100 dal valore misuratro tramite l'impedenza.
+\\L'errore, che comunque è piccolo, essendo circa del 1.4\%, è probabilmente dovuto all'approssimazione del linearFit, poichè la valutazione della pendenza rimane valida in un intorno stretto di $f_0$, ma muovendoci troppo nell'introno della frequenza di risonanza avremmo pochi campioni, quindi
 siamo costretti ad espandere il numero di campioni e quindi la distanza da $f_0$. Inoltre anche il valore di $Q_0$ valutato con la pendenza della fase è un valore valutato tramite approssimazioni, e questa è un'altra
-causa che ci porta più lontani dal valore misurato nel punto precedente. 
+causa che ci porta a discostarci leggermente dal valore misurato nel punto precedente. 
 
 
 \section{Confronto tra l'impedenza misurata e quella teorica}
@@ -182,6 +183,25 @@ Come si può notare i grafici sia il modulo che la fase sono molto vicini tra lo
 
 
 \section{Confronto tra la misura di $|S_{11}|$ e il valore teorico}
+Siamo passati poi a graficare il modulo di $S_{11}$ in dB e a confrontare il valore misurato
+con quello teorico dalle formule.
+Ricordiamo le formule teoriche:
+\begin{equation*}
+    S_{11t} = \sqrt{\frac{(\beta-1)^2 + (Q_0 \cdot \delta)^2}{(\beta+1)^2 + (Q_0 \cdot \delta)^2}}
+\end{equation*}
+\begin{equation*}
+    \delta = \frac{f}{f_0} - \frac{f_0}{f}
+\end{equation*}
+Il risultato è il seguente.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./Images/Relazione5_Foto/2_4_S11_modulo_teorico_e_misurato.png}
+    \caption{Confrotno di $|S_{11}|_{dB}$ misurato e teorico rispetto a $\delta$.}
+\end{figure}
+I due grafici sono molto simili, quindi possiamo concludere che la misurazione è valida.
+
+\section{Misura di $Q_0$ dalla pendenza della fase}
+
 
 \chapter{Deflettore RF (banda S): modi di tipo TM$_{110}$}
 
