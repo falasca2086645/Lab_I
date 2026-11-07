@@ -201,6 +201,48 @@ Il risultato è il seguente.
 I due grafici sono molto simili, quindi possiamo concludere che la misurazione è valida.
 
 \section{Misura di $Q_0$ dalla pendenza della fase}
+Siamo passati poi a misurare nuovamente la fase di $Q_0$ tramite la fase di $S_{11}$.
+\\Abbiamo misurato la fase tramite un'approssimazione lineare nella zona lineare della funzione, in modo da trovare la pendenza
+della fase nella regione lineare, tramite la quale abbiamo ricavato $Q_0$.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./Images/Relazione5_Foto/2_7_fase_S21_con_linear_fit.png}
+    \caption{Misura della fase di $S11$ con approssimazione lineare nella regione lineare.}
+\end{figure}
+La retta ha:
+\begin{align*}
+    \overline{p}=&  2.936126051692049\cdot 10^{-4} °/Hz \\
+    \sigma_p=& 2.664979343246028 \cdot 10^{-7} °/Hz
+\end{align*}
+Da queste misure ricaviamo $Q_0$:
+\begin{equation}
+    \angle S_{11} \simeq \frac{2\beta}{1-\beta^2}Q_0\frac{2(f-f0)}{f_0}
+\end{equation}
+Da questa ricaviamo $Q_0$ come:
+\begin{equation}
+    p=\frac{2\beta}{1-\beta^2}Q_0\frac{2}{f_0}
+\end{equation}
+\begin{equation}
+    \overline{Q_0}=\overline{p}\frac{1-\beta^2}{2\beta}\frac{f_0}{2}=   3.9144 \cdot 10^5
+\end{equation}
+\begin{equation}
+    \sigma_{Q_0}=  355.2934
+\end{equation}
+\begin{equation}
+    Q_0=391440 \pm 356 
+\end{equation}
+
+
+\chapter{Confronto tra la frequenza di risonanza teorica, misurata e valutata tramite matlab}
+Mostriamo di seguito una tabella con i tre valori della frequenza di risonanza, uno trovato dalla misura
+(pedice m), una teorica (pedice t), e una trovata tramite matlab (pedice M).
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+     &$f_{0m}$ & $f_{0t}$ & $f_{0M}$ \\ \hline
+     & 1.97637 GHz &   &   \\ \hline
+\end{tabular}
+\end{center}
 
 
 \chapter{Deflettore RF (banda S): modi di tipo TM$_{110}$}
