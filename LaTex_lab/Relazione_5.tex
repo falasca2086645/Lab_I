@@ -409,7 +409,70 @@ Di seguito una tabella che riassume la frequenza di risonanza, il fattore di qua
 
 \chapter{Cavità multicella decelerante (banda X)}
 
+\section{Misura della frequenza di tutti i modi tra 11.2 e 11.44 GHz}
+Abbiamo misurato il modulo di $S_{11}$ nell'intorno della frequenza di lavoro della cavità (11.424 GHz)
+per valutarne i modi nell'intorno di questa frequenza.
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{./Images/Relazione5_Foto/5_1_tutti_modi_banda.png}
+    \caption{Misura di $|S_{11}|$ tra 11.2 e 11.44 GHz.}
+\end{figure}
 
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+      Modo &I & II & III & IV & V  \\ \hline
+     Frequenza (GHz) &  11.223 & 11.2532 & 11.3076 & 11.3762 & 11.422 \\ \hline
+\end{tabular}
+\end{center}
+Come si nota facilmente il modo con $|S_{11}|$ minore è quello a 11.422 GHz, che corrisponde al modo di lavoro della cavità, dichiarato a 11.424GHz. 
+
+\section{Misura della frequenza di risonanza, del fattore di qualità e di accoppiamento del modo criticamente accoppiato}
+Il modo criticamente accoppiato è quello con $\beta=1$. 
+\\Come visto sopra, questo modo ha frequenza di risonanza pari a 11.422 GHz.
+\\Per trovare $Q_0$ abbiamo usato la stessa tecnica dei capitoli precedenti, aggiungere un offset di fase per ruotare il grafico sullo Smith chart fino alla posizione
+di short position, in modo da poter misurare la BW dalla misura del modulo dell'impedenza. 
+Di seguito le figure dei vari passaggi.
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./Images/Relazione5_Foto/5_2_smith_partenza.png}
+    \caption{Grafico di $S_{11}$ di partenza.}
+\end{figure}
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./Images/Relazione5_Foto/5_2_smith_short.png}
+    \caption{Grafico di $S_{11}$ in short position.}
+\end{figure}
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./Images/Relazione5_Foto/5_2_impedenza.png}
+    \caption{Misura del modulo dell'impedenza.}
+\end{figure}
+Dall'ultimo grafico ricaviamo la BW, pari a 1.8MHz.
+\\Dalla banda è facile ricavare il fattore di qualità non caricato:
+\begin{equation}
+    Q_0=\frac{f_0}{BW}=\frac{11.422 G}{1.8 M}=6345.6
+\end{equation}
+Il fattore di accoppiamento della cavità è ovviamente 1, poichè siamo in una guida criticamente accoppiata.
+\\Se ne ottiene anche la conferma definitiva dalla misura su Smith chart, dove la circonferenza passa esattamente per l'origine.
+\\Un'ulteriore conferma viene dal VSWR, che alla frequenza di risonanza mostra valore 1.
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./Images/Relazione5_Foto/5_2_VSWR.png}
+    \caption{Misura del VSWR.}
+\end{figure}
+Infine, dalla function Matlab ReflectionFitResonance otteniamo la stessa frequenza di risonanza, 11.422 GHz, un fattore di qualità $Q_0$ pari a 6319 e un fattore di accoppiamento $\beta$
+pari a 1.
+Quindi anche in questo caso troviamo un ottimo accordo tra le varie misure. 
+
+\section{Confronto tra l'$|S_{11}|$ misurato e teorico}
+Passiamo infine a graficare il $|S_{11}|$ teorico per confrontarlo con quello misurato.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{./Images/Relazione5_Foto/5_3_confronto_misurato_teorico.png}
+    \caption{Grafici del modulo di $S_{11}$ teorico e misurato rispetto a delta.}
+\end{figure}
+Per concludere, anche in questo caso la misura è molto vicina al valore trovato grazie alla teoria, e possiamo quindi ritenere le tutte le misure fatte valide.
 
 
 \end{document}
