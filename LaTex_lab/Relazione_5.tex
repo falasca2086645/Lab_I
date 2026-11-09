@@ -200,7 +200,35 @@ Il risultato è il seguente.
 \end{figure}
 I due grafici sono molto simili, quindi possiamo concludere che la misurazione è valida.
 
-\section{Misura di $Q_0$ dalla pendenza della fase}
+\section{Misura di $Q_0$ dalla pendenza della fase tramite markers}
+Graficando la fase di $S_{11}$ abbiamo preso due punti intorno alla frequenza di risonanza, e abbiamo ottenuto a 
+1.97634 GHz una fase di 38.0153°, e a 1.97637 GHz 47.282°.
+
+Dalle misure ricaviamo la pendenza tramite differenza finita:
+\begin{equation}
+    p=\frac{\Delta\phi}{\Delta f}
+    =\frac{47.282-38.0153}
+    {1.97637\cdot10^9-1.97634\cdot10^9}
+    =3.0889\cdot10^{-4}\,^\circ/\mathrm{Hz}
+\end{equation}
+
+Convertiamo la pendenza in radianti:
+\begin{equation}
+    p_{\mathrm{rad}}=p\frac{\pi}{180}
+    =5.39115\cdot10^{-6}\,\mathrm{rad/Hz}
+\end{equation}
+
+Da questa ricaviamo $Q_0$:
+\begin{equation}
+    Q_0=p_{\mathrm{rad}}\frac{1-\beta^2}{4\beta}f_0
+\end{equation}
+
+Utilizzando $\beta=0.3302$ e $f_0=1.97637\cdot10^9$ Hz:
+\begin{equation}
+    Q_0=7187.4
+\end{equation}
+
+\section{Misura di $Q_0$ dalla pendenza della fase tramite script matlab}
 Siamo passati poi a misurare nuovamente la fase di $Q_0$ tramite la fase di $S_{11}$.
 \\Abbiamo misurato la fase tramite un'approssimazione lineare nella zona lineare della funzione, in modo da trovare la pendenza
 della fase nella regione lineare, tramite la quale abbiamo ricavato $Q_0$.
@@ -211,45 +239,177 @@ della fase nella regione lineare, tramite la quale abbiamo ricavato $Q_0$.
 \end{figure}
 La retta ha:
 \begin{align*}
-    \overline{p}=&  2.936126051692049\cdot 10^{-4} °/Hz \\
-    \sigma_p=& 2.664979343246028 \cdot 10^{-7} °/Hz
+    \overline{p}=&  2.936126051692049\cdot 10^{-4} \, ^\circ/\mathrm{Hz} \\
+    \sigma_p=& 2.664979343246028 \cdot 10^{-7} \, ^\circ/\mathrm{Hz}
 \end{align*}
 Da queste misure ricaviamo $Q_0$:
 \begin{equation}
-    \angle S_{11} \simeq \frac{2\beta}{1-\beta^2}Q_0\frac{2(f-f0)}{f_0}
+    \angle S_{11} \simeq \frac{2\beta}{1-\beta^2}Q_0\frac{2(f-f_0)}{f_0}
 \end{equation}
 Da questa ricaviamo $Q_0$ come:
 \begin{equation}
-    p=\frac{2\beta}{1-\beta^2}Q_0\frac{2}{f_0}
+    p_{\mathrm{rad}}=\overline{p}\frac{\pi}{180}
 \end{equation}
 \begin{equation}
-    \overline{Q_0}=\overline{p}\frac{1-\beta^2}{2\beta}\frac{f_0}{2}=   3.9144 \cdot 10^5
+    Q_0=p_{\mathrm{rad}}\frac{1-\beta^2}{2\beta}\frac{f_0}{2}
 \end{equation}
 \begin{equation}
-    \sigma_{Q_0}=  355.2934
+    \overline{Q_0}=\overline{p}\frac{\pi}{180}\frac{1-\beta^2}{2\beta}\frac{f_0}{2}
+    = 6.8320 \cdot 10^3
 \end{equation}
 \begin{equation}
-    Q_0=391440 \pm 356 
+    \sigma_{Q_0}=  6.2010
+\end{equation}
+\begin{equation}
+    Q_0=6832.0 \pm 6.2
 \end{equation}
 
-
-\chapter{Confronto tra la frequenza di risonanza teorica, misurata e valutata tramite matlab}
+\section{Confronto tra la frequenza di risonanza teorica, misurata e valutata tramite matlab}
 Mostriamo di seguito una tabella con i tre valori della frequenza di risonanza, uno trovato dalla misura
 (pedice m), una teorica (pedice t), e una trovata tramite matlab (pedice M).
 \begin{center}
     \begin{tabular}{|c|c|c|c|c|}
         \hline
      &$f_{0m}$ & $f_{0t}$ & $f_{0M}$ \\ \hline
-     & 1.97637 GHz &   &   \\ \hline
+     & 1.97637 GHz &   &  1.97637 GHz \\ \hline
+\end{tabular}
+\end{center}
+
+\section{Confronto tra il fattore di qualità teorico, misurato e valutato tramite matlab}
+Mostriamo di seguito una tabella con i valori del fattore di qualità $Q_0$:
+uno teorico (pedice $t$), due ottenuti dalla misura della fase di $S_{11}$
+(pedice $S_{11}$), due ricavati dall'impedenza (pedice $Z$), e uno
+ottenuto tramite la routine Matlab (pedice $M$).
+
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        &$Q_{0t}$ & $Q_{0S_{11}}^{(1)}$ & $Q_{0S_{11}}^{(2)}$ 
+        & $Q_{0Z}^{(1)}$ & $Q_{0Z}^{(2)}$ & $Q_{0M}$ \\ \hline
+        &  & 6832 & 7187
+        & 7058 & 6925.3 & 7122 \\ \hline
+    \end{tabular}
+\end{center}
+
+
+\section{Confronto tra il fattore di accoppiamento teorico, misurato e valutato tramite matlab}
+Mostriamo infine una tabella con i tre valori del fattore di accoppiamento, uno trovato dalla misura
+(pedice m), e uno trovato tramite matlab (pedice M).
+
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+        \hline
+     &$\beta_{0m}$ &$\beta_{0M}$ \\ \hline
+     &  0.330 &    0.326 \\ \hline
+\end{tabular}
+\end{center}
+Anche in questo caso il valore misurato e quello teorico sono molto vicini tra loro, quindi la misura è valida. 
+
+\section{Confronto tra l'S11 misurata e toerica }
+Infine, abbiamo graficato sullo Smith chart la S11 misurata e teorica in short position.
+In rosso il valore misurato, in blu quello teorico.
+\\Come si nota facilmente i due grafici sono molto vicini tra loro, quindi possiamo rtienere nuovamente la misura valida.
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./Images/Relazione5_Foto/ACAB.png}
+\end{figure}
+
+\chapter{Deflettore RF (banda S): modi di tipo TM$_{110}$}
+Siamo passati poi a valutare il secondo gruppo di modi, quello a frequenze maggiori, e abbiamo preso il primo modo sovraccoppiato.
+\\Dei vari modi che si vedono nel secondo gruppo di modi della prima figura del report, il primo modo sottoaccoppiato è quello del secondo picco.
+Lo si nota facilmente dallo Smith chart perché contiene l'origine.
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{./Images/Relazione5_Foto/3_0_primo_mood_sovracc.png}
+    \caption{Grafico dell' $S_{11}$ sullo Smith chart.}
+\end{figure}
+
+
+\section{Misura della frequenza di risonanza, del fattore di qualità e del fattore di accoppiamento}
+\subsection{Misura della frequenza di risonanza}
+Graficando il modulo di $S_{11}$ centrandoci intorno al picco abbiamo valutato la frequenza $f_0$.
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{./Images/Relazione5_Foto/3_1_1_f0.png}
+    \caption{Modulo di $S_{11}$ del modo preso in analisi.}
+\end{figure}
+Dal grafico la frquenza di risonanza è 2.85998 GHz.
+
+\subsection{Misura del fattore di qualità}
+Per misurare il fattore di qualità $Q_0$ abbiamo usato lo stesso metodo del capitolo precedente, quindi abbiamo graficato sullo Smith chart l'$S_{11}$ di partenza, e poi abbiamo aggiungo prima un offset di fase di 72.4 gradi per portare la misura in short position, ed infine abbiamo graficato il modulo dell'impedenza 
+per misurare la banda. 
+\\Di seguito le figure con i vari passaggi (il primo grafico è ad inizio capitolo).
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{./Images/Relazione5_Foto/3_1_2_fase_short.png}
+    \caption{Grafico di $S_{11}$ con phase offset.}
+\end{figure}
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./Images/Relazione5_Foto/DAJE.png}
+    \caption{Grafico del modulo dell'impedenza con offset di fase.}
+\end{figure}
+Dal grafico ricaviamo una BW di 354 KHz, che danno un fattore di qualità $Q_0=8070$.
+
+\subsection{Misura del fattore di accoppiamento}
+Per questa misura abbiamo usato l'SWR, che alla frequenza di risonanza è proprio pari a $\beta$ per cavità sopraccoppiate.
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./Images/Relazione5_Foto/3_1_3_SWR.png}
+    \caption{Misura dell'SWR del modo.}
+\end{figure}
+Da questo ricaviamo che $beta$ vale circa 1.16.
+
+Dallo script matlab ReflectionFitResonance abbiamo ottenuto invece i seguenti valori:
+\begin{enumerate}
+    \item $f_0$=2.85998 GHz
+    \item $Q_0$=8090
+    \item $\beta$=1.2
+\end{enumerate}
+Anche in questo caso le misure e i valori della routine matlab sono molto vicini tra loro, quindi le misure risultano valide.
+
+
+
+\section{Confronto tra l'$|S_{11}|$ misurato e teorico}
+Di seguito un grafico per confrontareil modulo di $S_{11}$ misurato e teorico.
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./Images/Relazione5_Foto/Confronto_S11_misurato_e_teorico.png}
+    \caption{Grafici del modulo di $S_{11}$ teorico e misurato rispetto a delta.}
+\end{figure}
+Come si può vedere i due grafici anche in questo caso sono molto vicini tra loro, quindi la misura risulta nuovamente valida.
+
+\section{Confronto tra il modulo di $S_{11}$ con porta 3 lasciata aperta e chiusa su un carico da 50 ohm}
+Confrontiamo ora il modulo di $S_{11}$ misurato nel punto 3.1 con il caso di chiusra in carico adattato (50 ohm) sulla porta 3.
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{./Images/Relazione5_Foto/3_3_confronto_caricata_e_non.png}
+\caption{Misura dell modulo di $S_{11}$ con porta 3 lasciata aperta e chiusa su un carico da 50 ohm.}
+\end{figure}
+Come si nota facilmente, oltre ad avere un leggero spostamento della frequenza di risonanza dovuto alle variazioni delle condizioni al controno con la chiusura o meno della porta con carico,
+il modulo è molto più grande nel caso di chiusura con carico adattato (-6.07dB), rispetto alla misura presa con la porta lasciata aperta (-22.64 dB).
+\\Il motivo è che il carico adattato costituisce un ulteriore canale di dissipazione per la cavità. Con la porta 3 aperta la potenza viene totalmente riflessa e non esce da quella porta.
+
+\chapter{Deflettore RF (banda S): modi di tipo TM$_{010}$ e TM$_{110}$}
+Di seguito una tabella che riassume la frequenza di risonanza, il fattore di qualità non caricato, il fattore di accoppiamento e di perdita per ogni modo fino ai 3GHz.
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+      Modo & $f_0$(GHz) & $Q_0$ & $\beta$ & $\alpha$  \\ \hline
+      I & 1.97634 & 7134 & 0.324 & 0.99 \\ \hline
+      II & 1.99262   & 6966 & 0.071& 0.99 \\ \hline
+      III & 2.01101   & 7391 & 0.041& 0.99 \\ \hline
+      IV & 2.85997   & 8098 & 1.2 & 0.99 \\ \hline
+      V & 2.87981   & 7884 & 0.752 & 0.99 \\ \hline
+       VI & 2.87981   & 7884 & 0.752 & 0.99 \\ \hline
 \end{tabular}
 \end{center}
 
 
-\chapter{Deflettore RF (banda S): modi di tipo TM$_{110}$}
-
-\chapter{Deflettore RF (banda S): modi di tipo TM$_{010}$ e TM$_{110}$}
-
 \chapter{Cavità multicella decelerante (banda X)}
+
+
 
 
 \end{document}
