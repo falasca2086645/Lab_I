@@ -17,20 +17,20 @@
 Lo scopo dell'esercitazione è misurare due cavità risonanti, lavoranti a frequenze diverse, e valutarne i vari parametri
 caratteristici.
 \\Il primo deflector è progettato per lavorare a 2.856GHz (banda-S).
-\\Per prima cosa abbiamo identificato i modi del delfettore eccitato da un'antenna, misurando tra 1.5GHz e 3GHz (restando nei limit della calibraizone).
+\\Per prima cosa abbiamo identificato i modi del deflettore eccitato da un'antenna, misurando tra 1.5GHz e 3GHz (restando nei limiti della calibrazione).
 \\Il risultato è il seguente grafico.
 \begin{figure} [H]
     \centering
     \includegraphics[width=0.6\textwidth]{./Images/Relazione5_Foto/1_1_modi_generali.png}
     \caption{Misura della frequenza di risonanza dei modi fino a 3GHz eccitati dall'antenna.}
 \end{figure} 
-Come si nota di modi sono divisi in due gruppi, ognuno dei quali corrisponde al modo di una singola cella risonante del delfettore.
+Come si nota i modi sono divisi in due gruppi, ognuno dei quali corrisponde al modo di una singola cella risonante deflettore.
 \\Di seguito uno zoom sui due range dove troviamo i picchi.
 \begin{figure}[H]
     \centering
     \begin{minipage}[t]{0.45\textwidth}
         \centering
-        \includegraphics[width=0.9\textwidth]{./Images/Relazione5_Foto/1_2_zoom_sx.png}
+        \includegraphics[width=0.85\textwidth]{./Images/Relazione5_Foto/1_2_zoom_sx.png}
         \caption{Risonanza dei modi tra 1.965 e 2.02 GHz.}
     \end{minipage}
     \hfill
@@ -41,7 +41,7 @@ Come si nota di modi sono divisi in due gruppi, ognuno dei quali corrisponde al 
     \end{minipage}
 \end{figure}
 Come si nota facilmente il primo gruppo di modi è a circa 1.976GHz, mentre il secondo è a circa 2.860GHz.
-\\Come si vede chiaramente dai due grafici il valore di $|S_{11}|_{dB}$ è inferiore nel secondo range di frequenze, ed infatti il delfettore lavora a 2.856GHz proprio per questo motivo.
+\\Come si vede chiaramente dai due grafici il valore di $|S_{11}|_{dB}$ è inferiore nel secondo range di frequenze, ed infatti il deflettore lavora a 2.856GHz proprio per questo motivo.
 
 
 \chapter{Deflettore RF (banda S): modi di tipo TM$_{010}$}
@@ -51,7 +51,7 @@ Ci siamo centrati nel primo gruppo di modi risonanti ed in particolare abbiamo p
 \\Il grafico è:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{./Images/Relazione5_Foto/2_1_misura_f0.png}
+    \includegraphics[width=0.7\textwidth]{./Images/Relazione5_Foto/2_1_misura_f0.png}
     \caption{Misura della frequenza di risonanza e del modo con $|S_{11}|_{dB}$ minore nel primo gruppo di modi.}
 \end{figure}
 Da lui ricaviamo:
@@ -63,27 +63,27 @@ Di seguito vediamo i vari passaggi per misurare il fattore di qualità unloaded,
 Per prima cosa abbiamo misurato $S_{11}$ e lo abbiamo graficato sullo Smith chart. Il risultato è il seguente .
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{./Images/Relazione5_Foto/2_2_fase_smith_chart_non_modificata.png}
+    \includegraphics[width=0.7\textwidth]{./Images/Relazione5_Foto/2_2_fase_smith_chart_non_modificata.png}
     \caption{Misura di $S_{11}$ sullo Smith chart.}
 \end{figure}
 Poi abbiamo introdotto un offset di fase di 43.52° per portare lo Smith chart in posizione di open position.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{./Images/Relazione5_Foto/2_1_c_smith_sfasato_open.png}
+    \includegraphics[width=0.9\textwidth]{./Images/Relazione5_Foto/2_1_c_smith_sfasato_open.png}
     \caption{Misura di $S_{11}$ sullo Smith chart con offset per portarlo in open position.}
 \end{figure}
 In seguito abbiamo introdotto un offset di 180° per portare il grafico in short position.
 \begin{figure} [H]
     \centering
-    \includegraphics[width=0.6\textwidth]{./Images/Relazione5_Foto/2_1_d_short.png}
+    \includegraphics[width=0.9\textwidth]{./Images/Relazione5_Foto/2_1_d_short.png}
     \caption{Misura di $S_{11}$ sullo Smith chart con offset per portarlo in open position.}
 \end{figure}
 Fatti questi passaggi sullo Smith chart siamo passati a misurare il modulo dell'impedenza in dB al variare della frequenza.
-\\I passaggi precedenti sono necesari per rendere valida la misura della banda dell'impedenza.
+\\I passaggi precedenti sono necessari per rendere valida la misura della banda dell'impedenza.
 Il risultato è il seguente. 
 \begin{figure}
     \centering
-    \includegraphics[width=0.4\textwidth]{./Images/Relazione5_Foto/2_1_e_impedenza_db.png}
+    \includegraphics[width=0.6\textwidth]{./Images/Relazione5_Foto/2_1_e_impedenza_db.png}
     \caption{Misura dell'impedenza in dB e relativa banda a -3dB.}
 \end{figure}
 Dalla misura ricaviamo la banda, pari a 280KHz, da cui poi è facile ricavare $Q_0$:
@@ -107,7 +107,7 @@ Come si può vedere l'SWR vale 3.02866. Quindi:
 
 
 \section{Stima di $Q_0$ dal linear fit della fase dell'impedenza}
-Abbiamo valutato $Q_0$ dal linear fit della fase dell'impedenza. Essendo linear fit fatta per approssimare dei punti con una retta, abbiamo fatto il linear fit sono nella zona lineare della misura, e non per tutto 
+Abbiamo valutato $Q_0$ dal linear fit della fase dell'impedenza. Essendo il linear fit fatto per approssimare dei punti con una retta, abbiamo fatto il linear fit solo nella zona lineare della misura, e non per tutto 
 lo span, in modo da avere una retta molto precisa nella zona lineare.      
 \\Dal linear fit risulta:
 \begin{figure}[H]
@@ -161,8 +161,8 @@ Con \(f_0=1.976370\cdot10^9\,\mathrm{Hz}\):
 Q_0=\overline{Q_0}\pm\sigma_{Q_0}=6925.3\pm2.7
 \end{equation}
 
-Il valore valutato con linearFit si discosta di circa 100 dal valore misuratro tramite l'impedenza.
-\\L'errore, che comunque è piccolo, essendo circa del 1.4\%, è probabilmente dovuto all'approssimazione del linearFit, poichè la valutazione della pendenza rimane valida in un intorno stretto di $f_0$, ma muovendoci troppo nell'introno della frequenza di risonanza avremmo pochi campioni, quindi
+Il valore valutato con linearFit si discosta di circa 100 dal valore misurato tramite l'impedenza.
+\\L'errore, che comunque è piccolo, essendo circa del 1.4\%, è probabilmente dovuto all'approssimazione del linearFit, poiché la valutazione della pendenza rimane valida in un intorno stretto di $f_0$, ma muovendoci troppo nell'intorno della frequenza di risonanza avremmo pochi campioni, quindi
 siamo costretti ad espandere il numero di campioni e quindi la distanza da $f_0$. Inoltre anche il valore di $Q_0$ valutato con la pendenza della fase è un valore valutato tramite approssimazioni, e questa è un'altra
 causa che ci porta a discostarci leggermente dal valore misurato nel punto precedente. 
 
@@ -179,7 +179,7 @@ Grafichiamo ora insieme la misurazione con il valore teorico sia per la fase che
     \includegraphics[width=0.8\textwidth]{./Images/Relazione5_Foto/2_2_Fasi_Z_teorico_e_misurato.png}
     \caption{Fase dell'impedenza teorica e misurata.}
 \end{figure}
-Come si può notare i grafici sia il modulo che la fase sono molto vicini tra loro. Possiamo quindi concludere che le misirazioni sono precise e valide.
+Come si può notare i grafici sia il modulo che la fase sono molto vicini tra loro. Possiamo quindi concludere che le misurazioni sono precise e valide.
 
 
 \section{Confronto tra la misura di $|S_{11}|$ e il valore teorico}
@@ -196,7 +196,7 @@ Il risultato è il seguente.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{./Images/Relazione5_Foto/2_4_S11_modulo_teorico_e_misurato.png}
-    \caption{Confrotno di $|S_{11}|_{dB}$ misurato e teorico rispetto a $\delta$.}
+    \caption{Confronto di $|S_{11}|_{dB}$ misurato e teorico rispetto a $\delta$.}
 \end{figure}
 I due grafici sono molto simili, quindi possiamo concludere che la misurazione è valida.
 
@@ -305,10 +305,10 @@ Mostriamo infine una tabella con i tre valori del fattore di accoppiamento, uno 
 \end{center}
 Anche in questo caso il valore misurato e quello teorico sono molto vicini tra loro, quindi la misura è valida. 
 
-\section{Confronto tra l'S11 misurata e toerica }
+\section{Confronto tra l'S11 misurata e teorica }
 Infine, abbiamo graficato sullo Smith chart la S11 misurata e teorica in short position.
 In rosso il valore misurato, in blu quello teorico.
-\\Come si nota facilmente i due grafici sono molto vicini tra loro, quindi possiamo rtienere nuovamente la misura valida.
+\\Come si nota facilmente i due grafici sono molto vicini tra loro, quindi possiamo ritenere nuovamente la misura valida.
 \begin{figure} [H]
     \centering
     \includegraphics[width=0.6\textwidth]{./Images/Relazione5_Foto/ACAB.png}
@@ -320,7 +320,7 @@ Siamo passati poi a valutare il secondo gruppo di modi, quello a frequenze maggi
 Lo si nota facilmente dallo Smith chart perché contiene l'origine.
 \begin{figure} [H]
     \centering
-    \includegraphics[width=0.4\textwidth]{./Images/Relazione5_Foto/3_0_primo_mood_sovracc.png}
+    \includegraphics[width=0.5\textwidth]{./Images/Relazione5_Foto/3_0_primo_mood_sovracc.png}
     \caption{Grafico dell' $S_{11}$ sullo Smith chart.}
 \end{figure}
 
@@ -330,18 +330,18 @@ Lo si nota facilmente dallo Smith chart perché contiene l'origine.
 Graficando il modulo di $S_{11}$ centrandoci intorno al picco abbiamo valutato la frequenza $f_0$.
 \begin{figure} [H]
     \centering
-    \includegraphics[width=0.4\textwidth]{./Images/Relazione5_Foto/3_1_1_f0.png}
+    \includegraphics[width=0.6\textwidth]{./Images/Relazione5_Foto/3_1_1_f0.png}
     \caption{Modulo di $S_{11}$ del modo preso in analisi.}
 \end{figure}
-Dal grafico la frquenza di risonanza è 2.85998 GHz.
+Dal grafico la frequenza di risonanza è 2.85998 GHz.
 
 \subsection{Misura del fattore di qualità}
-Per misurare il fattore di qualità $Q_0$ abbiamo usato lo stesso metodo del capitolo precedente, quindi abbiamo graficato sullo Smith chart l'$S_{11}$ di partenza, e poi abbiamo aggiungo prima un offset di fase di 72.4 gradi per portare la misura in short position, ed infine abbiamo graficato il modulo dell'impedenza 
+Per misurare il fattore di qualità $Q_0$ abbiamo usato lo stesso metodo del capitolo precedente, quindi abbiamo graficato sullo Smith chart l'$S_{11}$ di partenza, e poi abbiamo aggiunto prima un offset di fase di 72.4 gradi per portare la misura in short position, ed infine abbiamo graficato il modulo dell'impedenza 
 per misurare la banda. 
 \\Di seguito le figure con i vari passaggi (il primo grafico è ad inizio capitolo).
 \begin{figure} [H]
     \centering
-    \includegraphics[width=0.4\textwidth]{./Images/Relazione5_Foto/3_1_2_fase_short.png}
+    \includegraphics[width=0.45\textwidth]{./Images/Relazione5_Foto/3_1_2_fase_short.png}
     \caption{Grafico di $S_{11}$ con phase offset.}
 \end{figure}
 
@@ -359,7 +359,7 @@ Per questa misura abbiamo usato l'SWR, che alla frequenza di risonanza è propri
     \includegraphics[width=0.6\textwidth]{./Images/Relazione5_Foto/3_1_3_SWR.png}
     \caption{Misura dell'SWR del modo.}
 \end{figure}
-Da questo ricaviamo che $beta$ vale circa 1.16.
+Da questo ricaviamo che $\beta$ vale circa 1.16.
 
 Dallo script matlab ReflectionFitResonance abbiamo ottenuto invece i seguenti valori:
 \begin{enumerate}
@@ -372,7 +372,7 @@ Anche in questo caso le misure e i valori della routine matlab sono molto vicini
 
 
 \section{Confronto tra l'$|S_{11}|$ misurato e teorico}
-Di seguito un grafico per confrontareil modulo di $S_{11}$ misurato e teorico.
+Di seguito un grafico per confrontare il modulo di $S_{11}$ misurato e teorico.
 \begin{figure} [H]
     \centering
     \includegraphics[width=0.6\textwidth]{./Images/Relazione5_Foto/Confronto_S11_misurato_e_teorico.png}
@@ -381,13 +381,13 @@ Di seguito un grafico per confrontareil modulo di $S_{11}$ misurato e teorico.
 Come si può vedere i due grafici anche in questo caso sono molto vicini tra loro, quindi la misura risulta nuovamente valida.
 
 \section{Confronto tra il modulo di $S_{11}$ con porta 3 lasciata aperta e chiusa su un carico da 50 ohm}
-Confrontiamo ora il modulo di $S_{11}$ misurato nel punto 3.1 con il caso di chiusra in carico adattato (50 ohm) sulla porta 3.
+Confrontiamo ora il modulo di $S_{11}$ misurato nel punto 3.1 con il caso di chiusura in carico adattato (50 ohm) sulla porta 3.
 \begin{figure} [H]
     \centering
     \includegraphics[width=0.7\textwidth]{./Images/Relazione5_Foto/3_3_confronto_caricata_e_non.png}
-\caption{Misura dell modulo di $S_{11}$ con porta 3 lasciata aperta e chiusa su un carico da 50 ohm.}
+\caption{Misura del modulo di $S_{11}$ con porta 3 lasciata aperta e chiusa su un carico da 50 ohm.}
 \end{figure}
-Come si nota facilmente, oltre ad avere un leggero spostamento della frequenza di risonanza dovuto alle variazioni delle condizioni al controno con la chiusura o meno della porta con carico,
+Come si nota facilmente, oltre ad avere un leggero spostamento della frequenza di risonanza dovuto alle variazioni delle condizioni al contorno con la chiusura o meno della porta con carico,
 il modulo è molto più grande nel caso di chiusura con carico adattato (-6.07dB), rispetto alla misura presa con la porta lasciata aperta (-22.64 dB).
 \\Il motivo è che il carico adattato costituisce un ulteriore canale di dissipazione per la cavità. Con la porta 3 aperta la potenza viene totalmente riflessa e non esce da quella porta.
 
@@ -435,12 +435,12 @@ di short position, in modo da poter misurare la BW dalla misura del modulo dell'
 Di seguito le figure dei vari passaggi.
 \begin{figure} [H]
     \centering
-    \includegraphics[width=0.6\textwidth]{./Images/Relazione5_Foto/5_2_smith_partenza.png}
+    \includegraphics[width=0.5\textwidth]{./Images/Relazione5_Foto/5_2_smith_partenza.png}
     \caption{Grafico di $S_{11}$ di partenza.}
 \end{figure}
 \begin{figure} [H]
     \centering
-    \includegraphics[width=0.6\textwidth]{./Images/Relazione5_Foto/5_2_smith_short.png}
+    \includegraphics[width=0.9\textwidth]{./Images/Relazione5_Foto/5_2_smith_short.png}
     \caption{Grafico di $S_{11}$ in short position.}
 \end{figure}
 \begin{figure} [H]
@@ -453,7 +453,7 @@ Dall'ultimo grafico ricaviamo la BW, pari a 1.8MHz.
 \begin{equation}
     Q_0=\frac{f_0}{BW}=\frac{11.422 G}{1.8 M}=6345.6
 \end{equation}
-Il fattore di accoppiamento della cavità è ovviamente 1, poichè siamo in una guida criticamente accoppiata.
+Il fattore di accoppiamento della cavità è ovviamente 1, poiché siamo in una guida criticamente accoppiata.
 \\Se ne ottiene anche la conferma definitiva dalla misura su Smith chart, dove la circonferenza passa esattamente per l'origine.
 \\Un'ulteriore conferma viene dal VSWR, che alla frequenza di risonanza mostra valore 1.
 \begin{figure} [H]
@@ -472,7 +472,7 @@ Passiamo infine a graficare il $|S_{11}|$ teorico per confrontarlo con quello mi
     \includegraphics[width=0.7\textwidth]{./Images/Relazione5_Foto/5_3_confronto_misurato_teorico.png}
     \caption{Grafici del modulo di $S_{11}$ teorico e misurato rispetto a delta.}
 \end{figure}
-Per concludere, anche in questo caso la misura è molto vicina al valore trovato grazie alla teoria, e possiamo quindi ritenere le tutte le misure fatte valide.
+Per concludere, anche in questo caso la misura è molto vicina al valore trovato grazie alla teoria, e possiamo quindi ritenere tutte le misure fatte valide.
 
 
 \end{document}
