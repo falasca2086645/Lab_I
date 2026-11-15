@@ -1,7 +1,7 @@
 \documentclass[11pt,a4paper,oneside]{book}
 \newcommand{\NumeroRelazione}{7}
 
-\newcommand{\TitoloRelazione}{Titolo}
+\newcommand{\TitoloRelazione}{Misure con vector Network Analysers di dispositivi lineari a 2 e 4 porte e di amplificatori}
 \input{common/preambolo}
 
 \begin{document}
@@ -12,6 +12,125 @@
 
 \mainmatter
  
-\chapter{AAA}
+
+
+\chapter{Filtro passa banda}
+ 
+\section{Misura del modulo di del paramtro di trasmissione in banda senza calibrazione}
+Siamo partiti misurando il modulo del parametro di trasmissione, $|S_{21}|$ intorno alla banda del filtro, tra 4.92 e 5.35 GHz.
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./Images/Relazione7_Foto/1_1_Misura_S21_filtro_senza_calir.png}
+    \caption{Misura del modulo di del paramtro di trasmissione in banda senza calibrazione.}
+\end{figure}
+Come ci aspettiamo, abbiamo un picco a -3dB nella regione dove passa il segnale e una discesa molto ripida fouri dalla banda. abbiamo deciso di mostrare uno span ampio rispetto alla banda del filtro, per mostare il suo intero adamento fino a che non rimane solo rumore. 
+
+\section{Misura del modulo di del paramtro di trasmissione in banda con calibrazione e confronto tra misura con e senza calibrazione}
+Abbiamo attivato la calibrazione, valida tra 10MHz e 9 GHz e abbiamo misurato nuovamente modulo di del paramtro di trasmissione, in modo da valutare la differenza introdotta dalla calibrazione nella misura.
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./Images/Relazione7_Foto/1_2_Misura_S21_filtro_con_calir.png}
+    \caption{Misura del modulo di del paramtro di trasmissione in banda con calibrazione attiva (blu) e senza calibrazione (rosso).}
+\end{figure}
+Come è facile notare, le due misure sono molto vicine tra loro, e si sovrappongono quasi completamente. L'unica differenza che a reputiamo importante sottolineare è il valore di picco, ossia il valore in banda, che sale da circa -3.3dB a -2.4dB, quindi abbiamo circa 1dB in più con calibrazione attiva, legato 
+alle perdite del cavo, che vengono valutate con la calibrazione attiva.
+
+
+\section{Valutazione della banda -3dB e -60dB}
+Dalla misurazione di $|S_{21}|$ con calibrazione attiva abbiamo valutato la banda -3dB e -60dB tramite lo strumento che ci permette di misurare tutto senza post elaborazione.
+\\I risultati sono i seguenti:
+\begin{center}
+\begin{tabular}{ |c|c|c| }
+    \hline
+    Banda -3dB (MHz) & Banda -60dB & Q \\ \hline
+    33.019 & 163.61 & 156.13 \\
+    \hline
+\end{tabular}
+\end{center}
+Essendo la risposta in frequenza centrata a 5.17GHz, possiamo concludere che il filtro è progettato per lavorare tra circa 5.14 e 5.20 GHz, con riferimento alla banda -3dB.
+\\In tabella abbiamo valutato il fattore di qualità rispetto alla banda -3dB, per mantenere la definizione standard di fattore di qualità Q.
+\\Ovviamente il valore di Q è molto inferiore rispetto a quello dei risonatori, che sono elementi progettati per avere il massimo di Q. 
+
+\section{Misura dei parametri della matrice di scattering}
+Siamo passati poi a valutare gli altri coefficienti della matrice di scatterig, inserendoli in 2 grafici, uno per i parametri di riflessione e uno per i parametri di trasmissione. 
+\\Per i parametri di riflessione:
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./Images/Relazione7_Foto/1_4_S11_e_S22.png}
+    \caption{Misura del modulo di $S_{11}$ (rosso) e del modulo di $S_{22}$ in blu.}
+\end{figure}
+Dalla misura di nota che il coefficiente di riflessione alla porta 2 è molto inferiore, circa 10dB in meno di valore minimo.
+\\I due coefficienti in banda assumono comunque valori molto piccoli, come ci aspettavamo da un filtro, che deve far passare tutto il segnale nella banda prestabilita.
+\\Per i coefficienti di trasmissione invece:
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./Images/Relazione7_Foto/1_4_S12_e_S21.png}
+    \caption{Misura del modulo di $S_{12}$ (rosso) e del modulo di $S_{21}$ in blu.}
+\end{figure}
+Anche in questo caso troviamo un risultato atteso, i due grafici in banda si sovrappongono perfettamente in banda, cosa ovvia per un componente reciproco come un filtro passa-banda.
+\\L'andamento, come visto anche nel primo paragrafo, è quello di un filtro passa-banda, che fa passare il segnale sono in banda, e la cui risposta in frequenza decresce molto rapidamente fuori banda.
+
+\section{Misura della fase del parametro di trasmissione e del ritardo introdotto dal filtro}
+
+
+
+
+\chapter{Giunzione a T, divisore di potenza}
+
+\section{Giunzione a T: matrice di scattering misurata e teorica}
+
+\section{Divisiore di potenza: matrice di scattering misurata e teorica}
+
+
+
+\chapter{Circolatore}
+
+\section{Valutazione della banda -3dB}
+
+\section{Matrice di scattering}
+
+\section{Misura del ritardo}
+
+
+
+
+\chapter{Accoppiatore direzionale}
+
+\section{Insertion loss}
+
+\section{Isolamento}
+
+\section{Accoppiamento}
+
+\section{Direttività}
+
+\section{Return Loss}
+
+
+
+
+\chapter{Accoppiatore ibrido}
+
+\section{Accoppiamento tra la porta 1 e le porte 3 e 4}
+
+\section{Isolamento tra la porta 1 e la porta 2}
+
+\section{Misura della fase tra la porta 1 e le porte 3 e 4, con ricerca del tipo di accoppiatore (90° o 180°)}
+
+
+
+\chapter{Amplificatore e sweep di potenza}
+
+\section{Misura del guadagno e del return loss di inpu e output}
+
+\section{Valutazione della banda -3dB del guadagno e della banda -10dB del return loss}
+\subsection{Banda -3dB del guadagno}
+
+\subsection{Banda -10dB del return loss}
+
+\section{Misura del modulo del parametro di trasmissione con sweep di potenza e valutazione del punto di compressione a 1dB}
+
+\section{Misura del coefficiente di riflessione d'ingresso e della ressiitenza in funzione della potenza}
 
 \end{document}
