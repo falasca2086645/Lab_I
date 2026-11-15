@@ -72,17 +72,65 @@ Anche in questo caso troviamo un risultato atteso, i due grafici in banda si sov
 \\L'andamento, come visto anche nel primo paragrafo, è quello di un filtro passa-banda, che fa passare il segnale sono in banda, e la cui risposta in frequenza decresce molto rapidamente fuori banda.
 
 \section{Misura della fase del parametro di trasmissione e del ritardo introdotto dal filtro}
-
-
+Abbiamo misurato la fase di $S_{21}$ in formato wrapped. Abbiamo poi fatto l'unwrap ed eseguito il linear fit per ricavare la pendenza.
+\\Il risultato è il seguente:
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./Images/Relazione7_Foto/1_5_fase_S21.png}
+    \caption{Misura della fase in formato wrapped (nero), unwrapped (rosso) e linear fit della fase (blu).}
+\end{figure}
+Dal linear fit otteniamo:
+\begin{equation}
+    \overline{p}=-1.095546420678454\cdot 10^{-05} \quad °/Hz
+\end{equation}
+\begin{equation}
+    \sigma_p= 1.065250129543955\cdot 10^{-7} \quad °/Hz
+\end{equation}
+Da queste troviamo il ritardo $\tau$:
+\begin{equation}
+    \overline{\tau}=\frac{-\overline{p}}{360°}=-3.0432\cdot 10^{-8} \quad s
+\end{equation}
+\begin{equation}
+    \sigma_{\tau}= \frac{\sigma_p}{360°}   =2.9590\cdot 10^{-10} \quad s
+\end{equation}
+E quindi possiamo concludere:
+\begin{equation}
+    \tau=3.043 \pm 0.030   \cdot 10^{-8} \quad s
+\end{equation}
+Abbiamo poi misurato il ritardo anche dallo strumento. Il risultato è il seguente.
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./Images/Relazione7_Foto/1_5_misura_delay.png}
+    \caption{Misura del ritardo introdotto dal filtro.}
+\end{figure} 
+In figura abbiamo evidenziato il valore massimo (41.81 ns) e minimo (26.57 ns) del ritardo in banda. 
+\\Il valore trovato tramite linear fit si trova tra questi due valori ottenuti dallo strumento. Possiamo quindi ritenere il valore ottenuto tramite linear fit valido e coerente, poiché è un valore trovato come valor medio in
+banda.
 
 
 \chapter{Giunzione a T, divisore di potenza}
 
 \section{Giunzione a T: matrice di scattering misurata e teorica}
+Abbiamo misurato con lo struemnto tutti i parametri della matrice di scatterig. Ricordiamo che per reciprocità dello strumento $S_{21}=S_{12}$, $S_{31}=S_{13}$ e $S_{23}=S_{32}$, quindi bastano 6 misure per ottenere la matrice. Ovviamente tutte le misure sono state prese con l'altra porta chiusa su un carico adatatto.
+\[
+\begin{pmatrix}
+-9.58 \cdot e^{107.69} & -3.55 \cdot e^{-63.84} & -3.66 \cdot e^{-64.28} \\
+-3.55 \cdot e^{-63.84} & -9.51\cdot e^{112.17} & -3.62\cdot e^{-63.04} \\
+-3.66 \cdot e^{-64.28} & -3.62 \cdot e^{-63.04} & -9.81 \cdot e^{113.14}
+\end{pmatrix}
+\]
+Come ci aspettavamo, la matrice ha coefficiente di riflessione in ingresso alle tre porte molto piccolo (meno di -9dB per ogni porta), e i coefficienti di trasmissione pari a circa -3dB, quindi 
+la potenza che entra in ogni porta viene ripartita equamente alle altre due porte (-3dB equivale a dividere per due in lineare).
 
 \section{Divisiore di potenza: matrice di scattering misurata e teorica}
-
-
+Anche in questa misurazione valgono le considerazioni del paragrafo precedente, quindi la reciprocità della marice, e l'aveer adattato la sempre una porta per prendere le misure.
+\[
+\begin{pmatrix}
+ -31.23 \cdot e^{-59.05} & -6.06 \cdot e^{-105.43} & -6.21 \cdot e^{-112.77} \\
+-6.06 \cdot e^{-105.43} & -35.16\cdot e^{-10.01} & -6.19\cdot e^{-111.45} \\
+-6.21 \cdot e^{-112.77} & -6.19\cdot e^{-111.45} & -23.22 \cdot e^{-25.06}
+\end{pmatrix}
+\]
 
 \chapter{Circolatore}
 
